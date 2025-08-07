@@ -67,14 +67,15 @@ public class InventoryMenu : MonoBehaviour
             int count = kvp.Value;
             int maxStack = kvp.Key.maxStack;
 
-            if (maxStack > 1)
+            while (count > 0)
             {
-                sb.AppendLine($"{itemName} x{count}");
-            }
-            else
-            {
-                for (int i = 0; i < count; i++)
+                int displayCount = Mathf.Min(count, maxStack);
+                if (maxStack > 1)
+                    sb.AppendLine($"{itemName} x{displayCount}");
+                else
                     sb.AppendLine(itemName);
+
+                count -= displayCount;
             }
         }
         inventoryText.text = sb.ToString();
