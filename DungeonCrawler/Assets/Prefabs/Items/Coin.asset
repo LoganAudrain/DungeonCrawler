@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 935e230124fbf4f4abe167a65b17d7dc, type: 3}
-  m_Name: Heath Potion
+  m_Name: Coin
   m_EditorClassIdentifier: 
-  itemType: 0
-  icon: {fileID: 3003054426909190986, guid: 1b3344e607d80e840b0c3ba691e61369, type: 3}
-  itemName: HeathP
+  itemType: 1
+  icon: {fileID: -5527729797564131307, guid: 1b3344e607d80e840b0c3ba691e61369, type: 3}
+  itemName: Coin
   description: 
-  HeathHealAmount: 20
+  HeathHealAmount: 0
   ManaHealAmount: 0
   maxStack: 100

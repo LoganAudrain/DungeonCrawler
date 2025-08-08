@@ -6,6 +6,8 @@ public class InventoryMenu : MonoBehaviour
 {
     public GameObject inventoryMenu;
     public TMP_Text inventoryText;
+    public int CoinCount;
+    public TMP_Text CoinCountText;
     public Inventory playerInventory;
 
     void Start()
@@ -53,6 +55,8 @@ public class InventoryMenu : MonoBehaviour
             return;
         }
 
+        CoinCount = 0;
+
         var itemCounts = playerInventory.GetItemCounts();
         if (itemCounts.Count == 0)
         {
@@ -67,6 +71,13 @@ public class InventoryMenu : MonoBehaviour
             int count = kvp.Value;
             int maxStack = kvp.Key.maxStack;
 
+            if (kvp.Key.itemType == ItemStats.ItemType.Coin)
+            {
+                CoinCount += count;
+
+                continue;
+            }
+
             while (count > 0)
             {
                 int displayCount = Mathf.Min(count, maxStack);
@@ -79,5 +90,9 @@ public class InventoryMenu : MonoBehaviour
             }
         }
         inventoryText.text = sb.ToString();
+        if (CoinCountText != null)
+            CoinCountText.text = $"Coins: {CoinCount}";
+
     }
+
 }

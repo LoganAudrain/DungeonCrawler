@@ -21,6 +21,10 @@ public class Inventory : MonoBehaviour
 
     public bool AddItem(ItemStats itemStats)
     {
+        if (itemStats == null)
+        {
+            return false;
+        }
         bool added = false;
         foreach (var slot in items)
         {
@@ -78,6 +82,11 @@ public class Inventory : MonoBehaviour
         Dictionary<ItemStats, int> counts = new Dictionary<ItemStats, int>();
         foreach (var slot in items)
         {
+            if (slot.itemStats == null)
+            {
+                continue;
+            }
+
             if (counts.ContainsKey(slot.itemStats))
                 counts[slot.itemStats] += slot.count;
             else
