@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   icon: {fileID: 3003054426909190986, guid: 1b3344e607d80e840b0c3ba691e61369, type: 3}
-  itemName: HeathP
+  itemName: Heath Potion
   description: 
   HeathHealAmount: 20
   ManaHealAmount: 0
-  maxStack: 100
+  maxStack: 1

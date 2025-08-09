@@ -65,7 +65,6 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    // Optional: expose inventory contents
     public IReadOnlyList<ItemStats> GetItems()
     {
         List<ItemStats> result = new List<ItemStats>();

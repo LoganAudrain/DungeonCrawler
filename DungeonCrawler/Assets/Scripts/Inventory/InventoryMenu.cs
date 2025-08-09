@@ -4,11 +4,20 @@ using UnityEngine.InputSystem;
 
 public class InventoryMenu : MonoBehaviour
 {
-    public GameObject inventoryMenu;
-    public TMP_Text inventoryText;
-    public int CoinCount;
-    public TMP_Text CoinCountText;
+
+    [Header("UI References")]
+    public GameObject inventoryMenu; // Main inventory panel
+    public TMP_Text CoinCountText;   // Coin display
+    public Transform itemListParent; // VerticalLayoutGroup container
+    public GameObject itemSlotPrefab; // Prefab with InventoryItemUI script
+
+    [Header("Inventory Data")]
     public Inventory playerInventory;
+
+
+    public int CoinCount;
+    private ItemStats selectedItem;
+
 
     void Start()
     {
@@ -40,6 +49,13 @@ public class InventoryMenu : MonoBehaviour
 
     }
 
+    public void SelectItem(ItemStats item)
+    {
+        selectedItem = item;
+        Debug.Log($"Now selected: {item.itemName}");
+        // Show description, equip, drop, etc.
+    }
+
     private void OnInventoryChanged()
     {
         Debug.Log("Inventory changed event received.");
@@ -49,50 +65,55 @@ public class InventoryMenu : MonoBehaviour
 
     void ShowInventoryContents()
     {
-        if (playerInventory == null || inventoryText == null)
+        if (playerInventory == null)
         {
-            Debug.LogError("Inventory or inventoryText not assigned.");
+            Debug.LogError("Inventory not assigned.");
             return;
         }
+        // Clear old UI entries
+        foreach (Transform child in itemListParent)
+            Destroy(child.gameObject);
 
         CoinCount = 0;
 
         var itemCounts = playerInventory.GetItemCounts();
         if (itemCounts.Count == 0)
         {
-            inventoryText.text = "Inventory is empty.";
+            // Show "empty" text slot if you want
+            GameObject emptySlot = Instantiate(itemSlotPrefab, itemListParent);
+            emptySlot.GetComponent<InventoryItemUI>().SetAsEmpty();
             return;
         }
+        bool hasNonCoinItems = false;
 
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
         foreach (var kvp in itemCounts)
         {
-            string itemName = kvp.Key.name;
-            int count = kvp.Value;
-            int maxStack = kvp.Key.maxStack;
+            var item = kvp.Key;
+            var count = kvp.Value;
 
-            if (kvp.Key.itemType == ItemStats.ItemType.Coin)
+            if (item.itemType == ItemStats.ItemType.Coin)
             {
                 CoinCount += count;
-
                 continue;
             }
-
+            hasNonCoinItems = true;
+            int maxStack = item.maxStack;
             while (count > 0)
             {
                 int displayCount = Mathf.Min(count, maxStack);
-                if (maxStack > 1)
-                    sb.AppendLine($"{itemName} x{displayCount}");
-                else
-                    sb.AppendLine(itemName);
-
+                GameObject slotObj = Instantiate(itemSlotPrefab, itemListParent);
+                slotObj.GetComponent<InventoryItemUI>().SetData(item, displayCount, this);
                 count -= displayCount;
             }
         }
-        inventoryText.text = sb.ToString();
+
+        if (!hasNonCoinItems)
+        {
+            GameObject emptySlot = Instantiate(itemSlotPrefab, itemListParent);
+            emptySlot.GetComponent<InventoryItemUI>().SetAsEmpty();
+        }
+
         if (CoinCountText != null)
             CoinCountText.text = $"Coins: {CoinCount}";
-
     }
-
 }

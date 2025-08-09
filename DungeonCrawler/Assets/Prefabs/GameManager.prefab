@@ -45,5 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryMenu: {fileID: 0}
-  inventoryText: {fileID: 0}
+  CoinCountText: {fileID: 0}
+  itemListParent: {fileID: 0}
+  itemSlotPrefab: {fileID: 1812816170144493286, guid: e62adf51bca4d7e48b378fb29097a47c, type: 3}
   playerInventory: {fileID: 0}
+  CoinCount: 0
