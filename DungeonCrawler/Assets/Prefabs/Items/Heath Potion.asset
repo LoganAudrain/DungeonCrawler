@@ -18,4 +18,4 @@ MonoBehaviour:
   description: 
   HeathHealAmount: 20
   ManaHealAmount: 0
-  maxStack: 1
+  maxStack: 2

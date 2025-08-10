@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: 0
   attackRangeMelee: 1
-  attackRangeRanged: 10
+  attackRangeRanged: 3
   attackCooldown: 1
   meleeDamage: 10
   projectilePrefab: {fileID: 0}
