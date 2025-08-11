@@ -12,7 +12,7 @@ public class WeaponData : ScriptableObject
 
     [Space(10)]
     [Header("Stats")]
-    public float damage;
+    public int damage;
     public float attackRate;
 
     [Space(10)]

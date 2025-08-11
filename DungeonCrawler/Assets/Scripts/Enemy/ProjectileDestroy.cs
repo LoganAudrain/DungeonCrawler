@@ -13,6 +13,7 @@ public class ProjectileDestroy : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Player"))
         {
+            DoDamage(collision.gameObject, 1);
             Destroy(gameObject);
         }
         
@@ -22,7 +23,16 @@ public class ProjectileDestroy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            DoDamage(other.gameObject, 1);
             Destroy(gameObject);
         }
+    }
+
+    private void DoDamage(GameObject obj, int damage)
+    {
+        HealthComponent healthComponent = obj.GetComponent<HealthComponent>();
+
+        if (healthComponent != null)
+            healthComponent.TakeDamage(1);
     }
 }
