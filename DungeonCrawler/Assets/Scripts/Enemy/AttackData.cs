@@ -19,4 +19,5 @@ public class AttackData : ScriptableObject
     [Header("Ranged")]
     public GameObject projectilePrefab;
     public float projectileSpeed = 10f;
+    public bool flipProjectile = false;
 }

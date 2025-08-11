@@ -7085,11 +7085,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1797957871315218406, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1797957871315218406, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.24901
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1797957871315218406, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7125,7 +7125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2310946995772133861, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Demon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
