@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public event Action OnInventoryChanged;
+    [SerializeField] int maxSlots = 10;
     private class InventorySlot
     {
         public ItemStats itemStats;
@@ -35,7 +36,7 @@ public class Inventory : MonoBehaviour
                 break;
             }
         }
-        if (!added && items.Count < 10)
+        if (!added && items.Count < maxSlots)
         {
             items.Add(new InventorySlot(itemStats, 1));
             added = true;
