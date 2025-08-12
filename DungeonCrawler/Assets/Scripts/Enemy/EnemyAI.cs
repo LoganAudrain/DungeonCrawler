@@ -10,9 +10,6 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 3f;
     public float detectionRange = 10f;
 
-    [Header("Stats")]
-    public int maxHp = 100;
-    private int currentHp;
 
 
     [SerializeField] Animator animator;
@@ -26,7 +23,6 @@ public class EnemyAI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHp = maxHp;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -87,19 +83,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         attackTimer -= Time.deltaTime;
-    }
-    public void TakeDamage(int damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-    void Die()
-    {
-        // Play death animation, disable enemy, etc.
-        Destroy(gameObject);
     }
 
     void HandleMelee(float distance)

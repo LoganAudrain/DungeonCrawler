@@ -7092,6 +7092,10 @@ PrefabInstance:
       propertyPath: maxHp
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -1160692642423839129, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
+      propertyPath: MaxHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1797957871315218406, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7135,6 +7139,14 @@ PrefabInstance:
     - target: {fileID: 2310946995772133861, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
       propertyPath: m_Name
       value: Demon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715024390521114178, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715024390521114178, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7857,6 +7869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
+  m_currentHealth: 0
 --- !u!1001 &3265023664490442819
 PrefabInstance:
   m_ObjectHideFlags: 0
