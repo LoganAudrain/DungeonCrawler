@@ -24,5 +24,13 @@ public class WeaponData : ScriptableObject
     [Header("Melee-Specific")]
     public float swingAngle;
     public float swingTime;
+    public float thrustDistance;
+    public float thrustTime;
     public float knockback;
+
+    [Space(10)]
+    [Header("Misc")]
+    [Range(0f, 180f)] public float spawnTimeRotationX;
+    [Range(0f, 180f)] public float spawnTimeRotationY;
+    [Range(0f, 180f)] public float spawnTimeRotationZ;
 }
