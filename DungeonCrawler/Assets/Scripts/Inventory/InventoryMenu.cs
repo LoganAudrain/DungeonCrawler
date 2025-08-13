@@ -43,7 +43,12 @@ public class InventoryMenu : MonoBehaviour
 
             if (showMenu)
             {
+                Time.timeScale = 0f; // Pause the game
                 ShowInventoryContents();
+            }
+            else
+            {
+                Time.timeScale = 1f; // Resume the game
             }
         }
 
@@ -116,4 +121,41 @@ public class InventoryMenu : MonoBehaviour
         if (CoinCountText != null)
             CoinCountText.text = $"Coins: {CoinCount}";
     }
+    public void UseItem(ItemStats item)
+    {
+        if (item.itemType == ItemStats.ItemType.Consumable)
+        {
+            // Example: Heal player, etc.
+            Debug.Log($"Used {item.itemName}");
+            playerInventory.RemoveItem(item);
+            ShowInventoryContents();
+        }
+
+    }
+
+    public void DropItem(ItemStats item)
+    {
+        Debug.Log($"Dropped {item.itemName}");
+        playerInventory.RemoveItem(item);
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null && item != null && item.itemPrefab != null)
+        {
+            Vector3 dropPosition = player.transform.position;
+            GameObject dropped = Instantiate(item.itemPrefab, dropPosition, Quaternion.identity);
+
+            // Set pickup delay if the prefab has ItemPickup
+            var pickup = dropped.GetComponent<ItemPickup>();
+            if (pickup != null)
+            {
+                pickup.SetPickupDelay(2f); // 2 seconds delay
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Player, item, or pickupPrefab missing. Cannot drop item.");
+        }
+        ShowInventoryContents();
+    }
+
 }

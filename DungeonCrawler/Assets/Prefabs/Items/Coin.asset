@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   icon: {fileID: -5527729797564131307, guid: 1b3344e607d80e840b0c3ba691e61369, type: 3}
+  itemPrefab: {fileID: 8042596503853942181, guid: c4ccdb53ff1d8474ea9485b624cb1a90, type: 3}
   itemName: Coin
   description: 
   HeathHealAmount: 0
