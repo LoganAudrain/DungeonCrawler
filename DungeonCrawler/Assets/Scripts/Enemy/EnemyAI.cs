@@ -10,9 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float moveSpeed = 3f;
     public float detectionRange = 10f;
 
-    [Header("Stats")]
-    public int maxHp = 100;
-    private int currentHp;
+
 
     [SerializeField] Animator animator;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -25,7 +23,6 @@ public class EnemyAI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        currentHp = maxHp;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -43,8 +40,37 @@ public class EnemyAI : MonoBehaviour
         // Make firePoint face the player
         if (firePoint && target)
         {
+            Vector2 toPlayer = target.position - transform.position;
+            float minVerticalThreshold = 1f; // Sensitivity for "directly above/below"
+
+            float xOffset, yOffset;
+
+            if (Mathf.Abs(toPlayer.x) < minVerticalThreshold && Mathf.Abs(toPlayer.y) > minVerticalThreshold)
+            {
+                // Player is directly above or below
+                xOffset = 0f;
+                yOffset = Mathf.Sign(toPlayer.y) * 0.11f;
+            }
+            else if (Mathf.Abs(toPlayer.x) > minVerticalThreshold && Mathf.Abs(toPlayer.y) > minVerticalThreshold)
+            {
+                // Diagonal
+                xOffset = Mathf.Sign(toPlayer.x) * 0.11f;
+                yOffset = Mathf.Sign(toPlayer.y) * 0.11f;
+            }
+            else
+            {
+                // Mostly horizontal
+                xOffset = Mathf.Sign(toPlayer.x) * 0.11f;
+                yOffset = 0f;
+            }
+
+            firePoint.localPosition = new Vector3(xOffset, yOffset, firePoint.localPosition.z);
+
+            // Make firePoint face the player
             Vector2 dir = (target.position - firePoint.position).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            if (attackData.flipProjectile)
+                angle += 180f;
             firePoint.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
@@ -57,19 +83,6 @@ public class EnemyAI : MonoBehaviour
         }
 
         attackTimer -= Time.deltaTime;
-    }
-    public void TakeDamage(int damage)
-    {
-        currentHp -= damage;
-        if (currentHp <= 0)
-        {
-            Die();
-        }
-    }
-    void Die()
-    {
-        // Play death animation, disable enemy, etc.
-        Destroy(gameObject);
     }
 
     void HandleMelee(float distance)
@@ -99,8 +112,18 @@ public class EnemyAI : MonoBehaviour
         animator.SetFloat("speed", movement.magnitude);
 
         // Sprite flipping
-        if (movement.x > 0) spriteRenderer.flipX = false;
-        else if (movement.x < 0) spriteRenderer.flipX = true;
+        if (movement.x > 0)
+        {
+            spriteRenderer.flipX = false;
+            if (firePoint != null)
+                firePoint.localPosition = new Vector3(Mathf.Abs(firePoint.localPosition.x), firePoint.localPosition.y, firePoint.localPosition.z);
+        }
+        else if (movement.x < 0)
+        {
+            spriteRenderer.flipX = true;
+            if (firePoint != null)
+                firePoint.localPosition = new Vector3(-Mathf.Abs(firePoint.localPosition.x), firePoint.localPosition.y, firePoint.localPosition.z);
+        }
     }
 
     void Attack()
@@ -123,6 +146,7 @@ public class EnemyAI : MonoBehaviour
                 Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
                 if (rb) rb.linearVelocity = (target.position - firePoint.position).normalized * attackData.projectileSpeed;
             }
+
         }
 
         attackTimer = attackData.attackCooldown;

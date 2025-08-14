@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ItemStats", menuName = "Scriptable Objects/ItemStats")]
 public class ItemStats : ScriptableObject
 {
+  
     public enum ItemType
     {
         Consumable,
@@ -14,6 +15,7 @@ public class ItemStats : ScriptableObject
     public ItemType itemType;
 
     public Sprite icon;
+    public GameObject itemPrefab; // Prefab for item representation in the world
     public string itemName;
     public string description;
     [Range( 0 , 100)] public int HeathHealAmount;

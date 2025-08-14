@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum WeaponType { Melee, Ranged }
 
-[CreateAssetMenu(fileName = "NewWeapon", menuName = "Weapons/Weapon")]
+[CreateAssetMenu(fileName = "NewWeapon", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
 {
     [Header("Basic Info")]
@@ -12,7 +12,7 @@ public class WeaponData : ScriptableObject
 
     [Space(10)]
     [Header("Stats")]
-    public float damage;
+    public int damage;
     public float attackRate;
 
     [Space(10)]
@@ -24,5 +24,13 @@ public class WeaponData : ScriptableObject
     [Header("Melee-Specific")]
     public float swingAngle;
     public float swingTime;
+    public float thrustDistance;
+    public float thrustTime;
     public float knockback;
+
+    [Space(10)]
+    [Header("Misc")]
+    [Range(0f, 180f)] public float spawnTimeRotationX;
+    [Range(0f, 180f)] public float spawnTimeRotationY;
+    [Range(0f, 180f)] public float spawnTimeRotationZ;
 }

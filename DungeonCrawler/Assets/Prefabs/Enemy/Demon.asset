@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e99ea8c9b2e58042ad36b1fdd20e4e4, type: 3}
   m_Name: Demon
   m_EditorClassIdentifier: 
-  attackType: 0
+  attackType: 1
   attackRangeMelee: 1
-  attackRangeRanged: 10
-  attackCooldown: 1
+  attackRangeRanged: 5
+  attackCooldown: 2
   meleeDamage: 10
-  projectilePrefab: {fileID: 0}
-  projectileSpeed: 10
+  projectilePrefab: {fileID: 8634996196177521226, guid: 563f46e6e0be91a45957ff689d2a1602, type: 3}
+  projectileSpeed: 5
+  flipProjectile: 1

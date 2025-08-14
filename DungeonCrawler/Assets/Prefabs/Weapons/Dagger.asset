@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58aa5a50ccfd4ca43813655b272fb262, type: 3}
+  m_Name: Dagger
+  m_EditorClassIdentifier: 
+  weaponName: Dagger
+  type: 0
+  prefab: {fileID: 2774881317403337060, guid: c9a4931ad89973545ae5d26ef1d9cbdf, type: 3}
+  damage: 1
+  attackRate: 0.5
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 0
+  swingAngle: 0
+  swingTime: 0
+  thrustDistance: 0.2
+  thrustTime: 0.25
+  knockback: 0
+  spawnTimeRotationX: 0
+  spawnTimeRotationY: 0
+  spawnTimeRotationZ: 90
