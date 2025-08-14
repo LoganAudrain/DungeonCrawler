@@ -30,9 +30,7 @@ public class ProjectileDestroy : MonoBehaviour
 
     private void DoDamage(GameObject obj, int damage)
     {
-        HealthComponent healthComponent = obj.GetComponent<HealthComponent>();
-
-        if (healthComponent != null)
-            healthComponent.TakeDamage(1);
+        IDamageable damageable = obj.GetComponent<IDamageable>();
+        damageable?.TakeDamage(10);
     }
 }

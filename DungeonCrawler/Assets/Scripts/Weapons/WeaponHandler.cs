@@ -73,11 +73,8 @@ public class WeaponHandler : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     { //because melee weapons are children of the player, the melee weapons collisions go here
 
-        HealthComponent health = collision.GetComponent<HealthComponent>();
-        if (health != null)
-        {
-            health.TakeDamage(weapon.damage);
-        }
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        damageable?.TakeDamage(weapon.damage);
     }
 
     private IEnumerator SwingWeapon(Transform weaponTransform, Vector2 aimDir, float duration)

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum WeaponType { Melee, Ranged }
 
-[CreateAssetMenu(fileName = "NewWeapon", menuName = "Weapons/Weapon")]
+[CreateAssetMenu(fileName = "NewWeapon", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
 {
     [Header("Basic Info")]
