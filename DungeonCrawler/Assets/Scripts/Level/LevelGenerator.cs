@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.WSA;
+using static Unity.Collections.AllocatorManager;
 using Random = UnityEngine.Random;
 
 
@@ -33,7 +34,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private TileBase VoidTile;
 
 
-    [SerializeField] private List<Room> rooms;
+    [SerializeField] private List<Region> rooms;
+    [SerializeField] private List<Region> hallways;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +43,7 @@ public class LevelGenerator : MonoBehaviour
         GenerateLevel();
     }
 
-    
+
 
 
     public void GenerateLevel()
@@ -54,30 +56,34 @@ public class LevelGenerator : MonoBehaviour
 
 
 
-        foreach (Room r  in rooms)
+        foreach (Region r in rooms)
         {
             BuildRoom(r, FloorTiles[0]);
         }
-            //DrawRoom(r);
+        foreach (Region r in hallways)
+        {
+            BuildHallway(r, FloorTiles[0]);
+        }
+        //DrawRoom(r);
 
         Debug.Log("Generated!");
     }
 
     private void GenerateRoom(ref Block block)
     {
-        Vector2Int pos = new Vector2Int(Random.Range(block.bounds.xMin, block.bounds.xMax - MinRoomSize - 1), Random.Range(block.bounds.yMin, block.bounds.yMax - MinRoomSize -  1));
+        Vector2Int pos = new Vector2Int(Random.Range(block.bounds.xMin, block.bounds.xMax - MinRoomSize - 1), Random.Range(block.bounds.yMin, block.bounds.yMax - MinRoomSize - 1));
         Vector2Int size = new Vector2Int(Random.Range(MinRoomSize, block.bounds.xMax - pos.x - 1), Random.Range(MinRoomSize, block.bounds.yMax - pos.y - 1));
 
-        block.room = new Room(pos, size);
+        block.region = new Region(pos, size);
 
-        BuildRoom(block.room, FloorTiles[0]);
-        
-        rooms.Add(block.room);
+        BuildRoom(block.region, FloorTiles[0]);
+
+        rooms.Add(block.region);
 
 #if UNITY_EDITOR
         if (debug)
         {
-            DrawRect(block.room.bounds, Color.red, 10000);
+            DrawRect(block.region.bounds, Color.red, 10000);
             DrawBlocks(block, Color.blue, 10000);
         }
 #endif
@@ -85,16 +91,109 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateHallway(ref Block block)
     {
+        if (block.Children.Count < 2)
+            return;
+        if (block.depth == 0)
+            return;
 
+
+
+
+        Vector2 Target = FindEdge(block);
+
+
+
+        Region regionA = block.Children[0].region;
+        Region regionB = block.Children[1].region;
+
+        float distance = Vector2.Distance(Target, regionA.bounds.center);
+
+        foreach(Region r in block.Children[0].subRegions)
+        {
+            if(Vector2.Distance(Target, regionA.bounds.center) < distance)
+            {
+                regionA = r;
+            }
+        }
+
+        distance = Vector2.Distance(Target, regionA.bounds.center);
+
+        foreach (Region r in block.Children[1].subRegions)
+        {
+            if (Vector2.Distance(Target, regionA.bounds.center) < distance)
+            {
+                regionB = r;
+            }
+        }
+
+        block.region = new Region(new Vector2Int((int)Target.x - 1, (int)Target.y - 1), new Vector2Int(2, 2));
+
+        Debug.DrawLine(regionA.bounds.center, regionB.bounds.center, Color.white, 10000);
+
+
+
+
+
+
+
+
+
+#if UNITY_EDITOR
+        if (debug)
+        {
+            DrawRect(block.region.bounds, Color.green, 10000);
+        }
+#endif
     }
 
-    private void BuildRoom(Room room, TileBase floortile)
+    private Vector2 FindEdge(Block block)
+    {
+        if (block.Children.Count < 2)
+            return new Vector2();
+
+        Vector2 BlockACenter = block.Children[0].bounds.center;
+        Vector2 BlockBCenter = block.Children[1].bounds.center;
+
+        Vector2 Edge = BlockACenter;
+
+        if(BlockACenter.x != BlockBCenter.x)
+        {
+            if(BlockACenter.x > BlockBCenter.x)
+            {
+                Edge.x = block.Children[0].bounds.xMin;
+            }
+            else
+            {
+                Edge.x = block.Children[1].bounds.xMin;
+            }
+        }
+        else
+        {
+            if (BlockACenter.y > BlockBCenter.y)
+            {
+                Edge.y = block.Children[0].bounds.yMin;
+            }
+            else
+            {
+                Edge.y = block.Children[1].bounds.yMin;
+            }
+        }
+
+        return Edge;
+    }
+
+    private void BuildRoom(Region room, TileBase floortile)
     {
         foreach (Vector2Int pos in room.bounds.allPositionsWithin)
         {
             _wallTiles.SetTile((Vector3Int)pos, null);
             _groundTiles.SetTile((Vector3Int)pos, floortile);
         }
+    }
+
+    private void BuildHallway(Region hallway, TileBase floortile)
+    {
+
     }
 
 
@@ -120,10 +219,7 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        if(block.Children.Count > 0 && block.room != null)
-        {
-            GenerateHallway(ref block);
-        }
+        GenerateHallway(ref block);
     }
 
     private void SplitBlockX(ref Block block)
@@ -144,6 +240,16 @@ public class LevelGenerator : MonoBehaviour
 
             block.Children.Add(blockA);
             block.Children.Add(blockB);
+
+            List<Region> regions = blockA.GetRegions();
+
+            if (regions.Count > 0)
+                block.subRegions.AddRange(regions);
+
+            regions = blockB.GetRegions();
+
+            if (regions.Count > 0)
+                block.subRegions.AddRange(regions);
         }
         else
         {
@@ -176,6 +282,16 @@ public class LevelGenerator : MonoBehaviour
 
             block.Children.Add(blockA);
             block.Children.Add(blockB);
+
+            List<Region> regions = blockA.GetRegions();
+
+            if (regions.Count > 0)
+                block.subRegions.AddRange(regions);
+
+            regions = blockB.GetRegions();
+
+            if (regions.Count > 0)
+                block.subRegions.AddRange(regions);
         }
         else
         {
@@ -234,10 +350,18 @@ public class LevelGenerator : MonoBehaviour
 
     private void DrawBlock(Block block, Color color, float duration)
     {
-        Debug.DrawLine(new Vector3(block.bounds.xMin, block.bounds.yMin, 1), new Vector3(block.bounds.xMin, block.bounds.yMax, 1), color, duration);
-        Debug.DrawLine(new Vector3(block.bounds.xMax, block.bounds.yMin, 1), new Vector3(block.bounds.xMax, block.bounds.yMax, 1), color, duration);
-        Debug.DrawLine(new Vector3(block.bounds.xMin, block.bounds.yMin, 1), new Vector3(block.bounds.xMax, block.bounds.yMin, 1), color, duration);
-        Debug.DrawLine(new Vector3(block.bounds.xMin, block.bounds.yMax, 1), new Vector3(block.bounds.xMax, block.bounds.yMax, 1), color, duration);
+        DrawRect(block.bounds, color, duration);
+    }
+
+    private void DrawRegion(Region region, Color color, float duration)
+    {
+        DrawRect(region.bounds, color, duration);
+        if (region.GetType() == typeof(HallRegion))
+        {
+            DrawRect(((HallRegion)region).boundA, color, duration);
+            DrawRect(((HallRegion)region).boundB, color, duration);
+            
+        }
     }
 #endif
 
@@ -247,8 +371,8 @@ public class LevelGenerator : MonoBehaviour
     {
         public RectInt bounds;
         public List<Block> Children = new List<Block>();
-        public Room room;
-        public Hallway hallway;
+        public Region region;
+        public List<Region> subRegions = new List<Region>();
         public int depth = 0;
 
         public Block(Vector2Int position, Vector2Int size)
@@ -261,21 +385,41 @@ public class LevelGenerator : MonoBehaviour
             bounds = new RectInt(xMin, yMin, width, height);
         }
 
+        public List<Region> GetRegions()
+        {
+            List<Region> list = new List<Region>();
+            if(region != null)
+                list.Add(region);
+            
+            if(subRegions != null)
+                list.AddRange(subRegions);
+
+            return list;
+        }
     }
 }
 
 [Serializable]
-public class Room
+public class Region
 {
     public RectInt bounds;
 
-    public Room(Vector2Int pos, Vector2Int size)
+    public Region(Vector2Int pos, Vector2Int size)
     {
         bounds = new RectInt(pos, size);
     }
 }
 
-public class Hallway
+
+[Serializable]
+public class HallRegion : Region
 {
-    public RectInt bounds;
+
+    public RectInt boundA;
+    public RectInt boundB;
+
+    public HallRegion(Vector2Int pos, Vector2Int size) : base(pos, size)
+    {
+        
+    }
 }
