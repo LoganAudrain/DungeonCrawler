@@ -7007,6 +7007,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe33dd57703b18a42ae93861ee28f374, type: 3}
+--- !u!1 &988026212 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2310946995772133861, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
+  m_PrefabInstance: {fileID: 1158554092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &988026220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988026212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2439bf22acc33294895972c01922ebed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 5
 --- !u!1001 &991763182
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7246,10 +7264,14 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1160692642423839129, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2310946995772133861, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 988026220}
   m_SourcePrefab: {fileID: 100100000, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
 --- !u!1001 &1261911803
 PrefabInstance:
@@ -7961,7 +7983,7 @@ PrefabInstance:
     - target: {fileID: 871160601577906759, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 11400000, guid: 94a1272f166946d409b472689e487c87, type: 2}
+      objectReference: {fileID: 11400000, guid: c6f02959f6da468408a5568931949bf5, type: 2}
     - target: {fileID: 1630154034863827145, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.261
@@ -8049,8 +8071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2439bf22acc33294895972c01922ebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  m_currentHealth: 0
+  MaxHealth: 50
 --- !u!1001 &3265023664490442819
 PrefabInstance:
   m_ObjectHideFlags: 0
