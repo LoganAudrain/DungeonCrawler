@@ -14,6 +14,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Awake()
     {
+       
         m_controls = new PlayerControls();
 
         //Movement

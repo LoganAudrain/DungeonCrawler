@@ -7,21 +7,37 @@ public class InventoryMenu : MonoBehaviour
 
     [Header("UI References")]
     public GameObject inventoryMenu; // Main inventory panel
+    public GameObject StatMenu; // Stats panel
     public TMP_Text CoinCountText;   // Coin display
+    public TMP_Text CurrantHealthText; // Player health display
+    public TMP_Text CurrantManaText; // Player mana display
+    public TMP_Text MaxHealthText;  // Player max health display
+    public TMP_Text MaxManaText; // Player max mana display
+    public TMP_Text StrengthText; // Player strength display
+    public TMP_Text ConstitutionText; // Player constitution display
+    public TMP_Text DexterityText; // Player dexterity display
+    public TMP_Text IntelligenceText; // Player intelligence display
     public Transform itemListParent; // VerticalLayoutGroup container
     public GameObject itemSlotPrefab; // Prefab with InventoryItemUI script
 
     [Header("Inventory Data")]
     public Inventory playerInventory;
-
+    public CharacterStats CharacterStats;
 
     public int CoinCount;
     private ItemStats selectedItem;
 
+    [Header("Stat Point System")]
+    public int availableSP = 10; // Starting SP, adjust as needed
+    public TMP_Text SPText; // Assign in inspector
+    private int selectedStatIndex = 0;
+    private readonly string[] statNames = { "Strength", "Constitution", "Dexterity", "Intelligence" };
+    private readonly int minStatValue = 1; // Minimum allowed value for stats
 
     void Start()
     {
         inventoryMenu.SetActive(false);
+        StatMenu.SetActive(false);
         if (playerInventory != null)
             playerInventory.OnInventoryChanged += OnInventoryChanged;
     }
@@ -38,27 +54,116 @@ public class InventoryMenu : MonoBehaviour
     {
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            bool showMenu = !inventoryMenu.activeSelf;
+            bool showMenu = !inventoryMenu.activeSelf ;
             inventoryMenu.SetActive(showMenu);
+            StatMenu.SetActive(showMenu);
 
             if (showMenu)
             {
                 Time.timeScale = 0f; // Pause the game
                 ShowInventoryContents();
+                ShowStats();
             }
             else
             {
                 Time.timeScale = 1f; // Resume the game
+                InventoryItemUI.HideAllActionBoxes(); // Hide use/drop buttons
             }
         }
-
+        if (inventoryMenu.activeSelf)
+        {
+            HandleStatPointInput();
+        }
     }
 
+    void HandleStatPointInput()
+    {
+        if (Keyboard.current.upArrowKey.wasPressedThisFrame)
+        {
+            selectedStatIndex = (selectedStatIndex - 1 + statNames.Length) % statNames.Length;
+            ShowStats();
+        }
+        if (Keyboard.current.downArrowKey.wasPressedThisFrame)
+        {
+            selectedStatIndex = (selectedStatIndex + 1) % statNames.Length;
+            ShowStats();
+        }
+        if (Keyboard.current.rightArrowKey.wasPressedThisFrame)
+        {
+            TryIncreaseStat(selectedStatIndex);
+        }
+        if (Keyboard.current.leftArrowKey.wasPressedThisFrame)
+        {
+            TryDecreaseStat(selectedStatIndex);
+        }
+    }
+
+    // Call this from the ">" button for each stat, passing the stat index (0=Strength, 1=Constitution, etc.)
+    public void OnIncreaseStatButton(int statIndex)
+    {
+        TryIncreaseStat(statIndex);
+    }
+
+    // Call this from the "<" button for each stat, passing the stat index
+    public void OnDecreaseStatButton(int statIndex)
+    {
+        TryDecreaseStat(statIndex);
+    }
+
+    void TryIncreaseStat(int statIndex)
+    {
+        if (availableSP <= 0) return;
+
+        switch (statIndex)
+        {
+            case 0: CharacterStats.IncreaseStrength(); break;
+            case 1: CharacterStats.IncreaseConstitution(); break;
+            case 2: CharacterStats.IncreaseDexterity(); break;
+            case 3: CharacterStats.IncreaseIntelligence(); break;
+        }
+        availableSP--;
+        ShowStats();
+    }
+    void TryDecreaseStat(int statIndex)
+    {
+       switch(statIndex)
+        {
+             case 0:
+                if (CharacterStats.GetStrength > minStatValue)
+                {
+                     CharacterStats.DecreaseStrength();
+                    availableSP++;
+                }
+                break;
+            case 1:
+                if (CharacterStats.GetConstitution > minStatValue)
+                {
+                    CharacterStats.DecreaseConstitution();
+                    availableSP++;
+                }
+                break;
+            case 2:
+                if (CharacterStats.GetDexterity > minStatValue)
+                {
+                    CharacterStats.DecreaseDexterity();
+                    availableSP++;
+                }
+                break;
+            case 3:
+                if (CharacterStats.GetIntelligence > minStatValue)
+                {
+                    CharacterStats.DecreaseIntelligence();
+                    availableSP++;
+                }
+                break;
+        }
+       
+        ShowStats();
+    }
     public void SelectItem(ItemStats item)
     {
         selectedItem = item;
         Debug.Log($"Now selected: {item.itemName}");
-        // Show description, equip, drop, etc.
     }
 
     private void OnInventoryChanged()
@@ -66,6 +171,26 @@ public class InventoryMenu : MonoBehaviour
         Debug.Log("Inventory changed event received.");
         if (inventoryMenu.activeSelf)
             ShowInventoryContents();
+    }
+
+    void ShowStats()
+    {
+        if (CharacterStats == null)
+        {
+            Debug.LogError("CharacterStats not assigned.");
+            return;
+        }
+        CurrantHealthText.text = $"{CharacterStats.GetCurrentHealth}";
+        MaxHealthText.text = $"{CharacterStats.GetMaxHealth}";
+        CurrantManaText.text = $"{CharacterStats.GetCurrentMana}";
+        MaxManaText.text = $"{CharacterStats.GetMaxMana}";
+        StrengthText.text = CharacterStats.GetStrength.ToString();
+        ConstitutionText.text = CharacterStats.GetConstitution.ToString();
+        DexterityText.text = CharacterStats.GetDexterity.ToString();
+        IntelligenceText.text = CharacterStats.GetIntelligence.ToString();
+
+        if (SPText != null)
+            SPText.text = $"{availableSP}";
     }
 
     void ShowInventoryContents()
@@ -123,10 +248,26 @@ public class InventoryMenu : MonoBehaviour
     }
     public void UseItem(ItemStats item)
     {
+
         if (item.itemType == ItemStats.ItemType.Consumable)
         {
-            // Example: Heal player, etc.
             Debug.Log($"Used {item.itemName}");
+
+            // Heal player if this item is a health potion
+            if (item.HeathHealAmount > 0 && CharacterStats != null)
+            {
+                int newHealth = CharacterStats.GetCurrentHealth + item.HeathHealAmount;
+                if (newHealth > CharacterStats.GetMaxHealth)
+                    newHealth = CharacterStats.GetMaxHealth;
+
+                // Set the new health value (using reflection since m_currentHealth is private)
+                typeof(CharacterStats)
+                    .GetField("m_currentHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    .SetValue(CharacterStats, newHealth);
+
+                ShowStats();
+            }
+
             playerInventory.RemoveItem(item);
             ShowInventoryContents();
         }

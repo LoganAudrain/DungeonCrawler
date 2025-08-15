@@ -56,8 +56,16 @@ public class InventoryItemUI : MonoBehaviour
                 }
             }
         }
-    }
 
+    }
+    public static void HideAllActionBoxes()
+    {
+        if (currentOpenActionBox != null)
+        {
+            currentOpenActionBox.SetActive(false);
+            currentOpenActionBox = null;
+        }
+    }
     public void SetData(ItemStats data, int count, InventoryMenu menu)
     {
         itemData = data;
@@ -122,7 +130,7 @@ public class InventoryItemUI : MonoBehaviour
             out Vector2 localPoint
         );
 
-        localPoint.y -= 50; // Offset a bit below the cursor
+        localPoint.y -= 5; // Offset a bit below the cursor
 
         // Position and show
         RectTransform actionRect = actionBox.GetComponent<RectTransform>();

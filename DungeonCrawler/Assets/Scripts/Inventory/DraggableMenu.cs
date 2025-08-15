@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class DraggableMenu : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
@@ -25,6 +26,11 @@ public class DraggableMenu : MonoBehaviour, IPointerDownHandler, IDragHandler
 
     public void OnDrag(PointerEventData eventData)
     {
+
+        if (!(Keyboard.current != null && (Keyboard.current.leftShiftKey.isPressed || Keyboard.current.rightShiftKey.isPressed)))
+            return;
+
+
         if (panelRectTransform == null || canvasRectTransform == null)
             return;
 
