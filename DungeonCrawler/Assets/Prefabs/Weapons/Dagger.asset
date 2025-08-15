@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   prefab: {fileID: 2774881317403337060, guid: c9a4931ad89973545ae5d26ef1d9cbdf, type: 3}
   damage: 1
-  attackRate: 0.5
+  attackRate: 0.4
   projectilePrefab: {fileID: 0}
   projectileSpeed: 0
   swingAngle: 0
