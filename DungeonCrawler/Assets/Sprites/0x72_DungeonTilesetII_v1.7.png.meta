@@ -7343,10 +7343,10 @@ TextureImporter:
       name: 0x72_DungeonTilesetII_v1.7_289
       rect:
         serializedVersion: 2
-        x: 303
-        y: 63
-        width: 50
-        height: 50
+        x: 304
+        y: 96
+        width: 16
+        height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -7511,6 +7511,138 @@ TextureImporter:
       bones: []
       spriteID: 8cffbaf192464414f9dba1c8cc083e54
       internalID: 1774880294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_297
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 96
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e472d2ce2d871746bf6047d2122dc6b
+      internalID: 148126762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_298
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a10168bb079ce524493e033e0a88da19
+      internalID: 1768192502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_300
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 80
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c09c1b29683534a8fadb5b1e1e402a
+      internalID: 695665019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_301
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 80
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35be519004af064cbfba871ea53e32d
+      internalID: -442168575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_303
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 63
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ec047f716c90a46b9f400ce20017ce
+      internalID: 1473292342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 0x72_DungeonTilesetII_v1.7_304
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 63
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db1c5175571be34eacb7ab6c8b6d4da
+      internalID: 1291641288
       vertices: []
       indices: 
       edges: []
@@ -7749,8 +7881,16 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_294: 3258979074984140082
       0x72_DungeonTilesetII_v1.7_295: 552283597
       0x72_DungeonTilesetII_v1.7_296: 1774880294
+      0x72_DungeonTilesetII_v1.7_297: 148126762
+      0x72_DungeonTilesetII_v1.7_298: 1768192502
+      0x72_DungeonTilesetII_v1.7_299: 1800662772
       0x72_DungeonTilesetII_v1.7_3: 6867809341995509054
       0x72_DungeonTilesetII_v1.7_30: 3914297699600369032
+      0x72_DungeonTilesetII_v1.7_300: 695665019
+      0x72_DungeonTilesetII_v1.7_301: -442168575
+      0x72_DungeonTilesetII_v1.7_302: -806903783
+      0x72_DungeonTilesetII_v1.7_303: 1473292342
+      0x72_DungeonTilesetII_v1.7_304: 1291641288
       0x72_DungeonTilesetII_v1.7_31: 1730889299519279947
       0x72_DungeonTilesetII_v1.7_32: -1143173064917871634
       0x72_DungeonTilesetII_v1.7_33: 8231776995656435021

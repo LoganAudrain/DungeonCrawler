@@ -137,6 +137,11 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.Log("Melee attack for " + attackData.meleeDamage + " damage!");
             // Call player damage function here
+            var playerStats = target.GetComponent<CharacterStats>();
+            if (playerStats != null)
+            {
+                playerStats.TakeDamage(attackData.meleeDamage);
+            }
         }
         else if (attackData.attackType == AttackType.Ranged)
         {

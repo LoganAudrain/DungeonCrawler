@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour
 {
     [SerializeField] WeaponData weapon;
+    [SerializeField] CharacterStats characterStats;
 
     private bool m_isAttacking = false;
 
@@ -74,7 +75,7 @@ public class WeaponHandler : MonoBehaviour
     { //because melee weapons are children of the player, the melee weapons collisions go here
 
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        damageable?.TakeDamage(weapon.damage);
+        damageable?.TakeDamage(weapon.damage + (characterStats.GetStrength * 2));
     }
 
     private IEnumerator SwingWeapon(Transform weaponTransform, Vector2 aimDir, float duration)

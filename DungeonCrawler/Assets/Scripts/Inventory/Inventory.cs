@@ -66,13 +66,71 @@ public class Inventory : MonoBehaviour
         return false;
     }
 
-    public IReadOnlyList<ItemStats> GetItems()
+    public bool UseItemAtSlot(int slotIndex, CharacterStats characterStats)
     {
-        List<ItemStats> result = new List<ItemStats>();
+        if (slotIndex < 0 || slotIndex >= items.Count)
+            return false;
+
+        var slot = items[slotIndex];
+        var item = slot.itemStats;
+
+        if (item.itemType == ItemStats.ItemType.Consumable)
+        {
+            if (item.HeathHealAmount > 0 && characterStats != null)
+            {
+                int newHealth = characterStats.GetCurrentHealth + item.HeathHealAmount;
+                if (newHealth > characterStats.GetMaxHealth)
+                    newHealth = characterStats.GetMaxHealth;
+
+                typeof(CharacterStats)
+                    .GetField("m_currentHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    .SetValue(characterStats, newHealth);
+            }
+            if (item.ManaHealAmount > 0 && characterStats != null)
+            {
+                int newMana = characterStats.GetCurrentMana + item.ManaHealAmount;
+                if (newMana > characterStats.GetMaxMana)
+                    newMana = characterStats.GetMaxMana;
+                typeof(CharacterStats)
+                    .GetField("m_currentMana", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                    .SetValue(characterStats, newMana);
+            }
+
+            RemoveItemAtSlot(slotIndex);
+            OnInventoryChanged?.Invoke();
+            return true;
+        }
+        return false;
+    }
+
+    public bool DropItemAtSlot(int slotIndex, out ItemStats droppedItem)
+    {
+        droppedItem = null;
+        if (slotIndex < 0 || slotIndex >= items.Count)
+            return false;
+
+        droppedItem = items[slotIndex].itemStats;
+        RemoveItemAtSlot(slotIndex);
+        OnInventoryChanged?.Invoke();
+        return true;
+    }
+
+    private void RemoveItemAtSlot(int slotIndex)
+    {
+        var slot = items[slotIndex];
+        slot.count--;
+        if (slot.count <= 0)
+        {
+            items.RemoveAt(slotIndex);
+        }
+    }
+
+    public IReadOnlyList<(ItemStats itemStats, int count)> GetSlots()
+    {
+        var result = new List<(ItemStats, int)>();
         foreach (var slot in items)
         {
-            for (int i = 0; i < slot.count; i++)
-                result.Add(slot.itemStats);
+            result.Add((slot.itemStats, slot.count));
         }
         return result;
     }
@@ -93,5 +151,15 @@ public class Inventory : MonoBehaviour
                 counts[slot.itemStats] = slot.count;
         }
         return counts;
+    }
+    public void SwapSlots(int indexA, int indexB)
+    {
+        if (indexA < 0 || indexA >= items.Count || indexB < 0 || indexB >= items.Count || indexA == indexB)
+            return;
+
+        var temp = items[indexA];
+        items[indexA] = items[indexB];
+        items[indexB] = temp;
+        OnInventoryChanged?.Invoke();
     }
 }

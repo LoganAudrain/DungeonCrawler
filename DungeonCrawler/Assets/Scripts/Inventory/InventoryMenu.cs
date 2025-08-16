@@ -200,26 +200,25 @@ public class InventoryMenu : MonoBehaviour
             Debug.LogError("Inventory not assigned.");
             return;
         }
-        // Clear old UI entries
         foreach (Transform child in itemListParent)
             Destroy(child.gameObject);
 
         CoinCount = 0;
 
-        var itemCounts = playerInventory.GetItemCounts();
-        if (itemCounts.Count == 0)
+        var slots = playerInventory.GetSlots();
+        if (slots.Count == 0)
         {
-            // Show "empty" text slot if you want
             GameObject emptySlot = Instantiate(itemSlotPrefab, itemListParent);
             emptySlot.GetComponent<InventoryItemUI>().SetAsEmpty();
             return;
         }
         bool hasNonCoinItems = false;
 
-        foreach (var kvp in itemCounts)
+        for (int i = 0; i < slots.Count; i++)
         {
-            var item = kvp.Key;
-            var count = kvp.Value;
+            var slot = slots[i];
+            var item = slot.itemStats;
+            var count = slot.count;
 
             if (item.itemType == ItemStats.ItemType.Coin)
             {
@@ -227,14 +226,8 @@ public class InventoryMenu : MonoBehaviour
                 continue;
             }
             hasNonCoinItems = true;
-            int maxStack = item.maxStack;
-            while (count > 0)
-            {
-                int displayCount = Mathf.Min(count, maxStack);
-                GameObject slotObj = Instantiate(itemSlotPrefab, itemListParent);
-                slotObj.GetComponent<InventoryItemUI>().SetData(item, displayCount, this);
-                count -= displayCount;
-            }
+            GameObject slotObj = Instantiate(itemSlotPrefab, itemListParent);
+            slotObj.GetComponent<InventoryItemUI>().SetData(item, count, this, i); // Pass slot index
         }
 
         if (!hasNonCoinItems)
@@ -246,57 +239,43 @@ public class InventoryMenu : MonoBehaviour
         if (CoinCountText != null)
             CoinCountText.text = $"Coins: {CoinCount}";
     }
-    public void UseItem(ItemStats item)
+
+ 
+    public void UseItemAtSlot(int slotIndex)
     {
-
-        if (item.itemType == ItemStats.ItemType.Consumable)
+        if (playerInventory.UseItemAtSlot(slotIndex, CharacterStats))
         {
-            Debug.Log($"Used {item.itemName}");
-
-            // Heal player if this item is a health potion
-            if (item.HeathHealAmount > 0 && CharacterStats != null)
-            {
-                int newHealth = CharacterStats.GetCurrentHealth + item.HeathHealAmount;
-                if (newHealth > CharacterStats.GetMaxHealth)
-                    newHealth = CharacterStats.GetMaxHealth;
-
-                // Set the new health value (using reflection since m_currentHealth is private)
-                typeof(CharacterStats)
-                    .GetField("m_currentHealth", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
-                    .SetValue(CharacterStats, newHealth);
-
-                ShowStats();
-            }
-
-            playerInventory.RemoveItem(item);
+            ShowStats();
             ShowInventoryContents();
         }
-
     }
-
-    public void DropItem(ItemStats item)
+    public void DropItemAtSlot(int slotIndex)
     {
-        Debug.Log($"Dropped {item.itemName}");
-        playerInventory.RemoveItem(item);
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null && item != null && item.itemPrefab != null)
+        if (playerInventory.DropItemAtSlot(slotIndex, out ItemStats droppedItem))
         {
-            Vector3 dropPosition = player.transform.position;
-            GameObject dropped = Instantiate(item.itemPrefab, dropPosition, Quaternion.identity);
-
-            // Set pickup delay if the prefab has ItemPickup
-            var pickup = dropped.GetComponent<ItemPickup>();
-            if (pickup != null)
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null && droppedItem != null && droppedItem.itemPrefab != null)
             {
-                pickup.SetPickupDelay(2f); // 2 seconds delay
+                Vector3 dropPosition = player.transform.position;
+                GameObject dropped = Instantiate(droppedItem.itemPrefab, dropPosition, Quaternion.identity);
+
+                var pickup = dropped.GetComponent<ItemPickup>();
+                if (pickup != null)
+                {
+                    pickup.SetPickupDelay(2f);
+                }
             }
+            else
+            {
+                Debug.LogWarning("Player, item, or pickupPrefab missing. Cannot drop item.");
+            }
+            ShowInventoryContents();
         }
-        else
-        {
-            Debug.LogWarning("Player, item, or pickupPrefab missing. Cannot drop item.");
-        }
-        ShowInventoryContents();
     }
+ public void SwapSlots(int indexA, int indexB)
+{
+    playerInventory.SwapSlots(indexA, indexB);
+    ShowInventoryContents();
+}
 
 }

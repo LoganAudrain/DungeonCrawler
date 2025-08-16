@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1797957871315218406}
   - component: {fileID: 4715024390521114178}
-  - component: {fileID: -1160692642423839129}
+  - component: {fileID: 7068570173720674255}
   - component: {fileID: -4690096966096620593}
   - component: {fileID: 1527289636463521283}
   - component: {fileID: 3868384826912385421}
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1160692642423839129
+--- !u!114 &7068570173720674255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,11 +189,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2310946995772133861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7802f64a098722d458c6cd3cd86889ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 2439bf22acc33294895972c01922ebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1
-  m_currentHealth: 0
+  MaxHealth: 100
+  MaxMana: 0
+  Strength: 0
+  Constitution: 0
+  Dexterity: 0
+  Intelligence: 0
 --- !u!114 &-4690096966096620593
 MonoBehaviour:
   m_ObjectHideFlags: 0
