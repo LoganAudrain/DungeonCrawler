@@ -15,6 +15,11 @@ public class Chest : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float emptyChance = 0.2f; // 20% chance to be empty
 
+    [Header("Loot Table")]
+    [SerializeField] private LootTable lootTable;
+    [SerializeField] private LayerMask obstacleMask;
+    [SerializeField] private float dropRadius = 1.0f;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -71,6 +76,41 @@ public class Chest : MonoBehaviour
 
         animator.SetBool("isOpen", true); // Play normal open animation
         Debug.Log("Chest opened and gave loot!");
-        // Add loot logic here if needed
+
+      
+    }
+    void DropLoot()
+    {
+        if (lootTable == null || lootTable.lootEntries == null || lootTable.lootEntries.Length == 0)
+            return;
+
+        int dropCount = Random.Range(3, 6); // 3 to 5 items
+        Vector2[] directions = {
+            Vector2.up, Vector2.down, Vector2.left, Vector2.right,
+            new Vector2(1,1).normalized, new Vector2(-1,1).normalized,
+            new Vector2(1,-1).normalized, new Vector2(-1,-1).normalized
+        };
+
+        System.Collections.Generic.List<int> availableDirs = new System.Collections.Generic.List<int>();
+        for (int i = 0; i < directions.Length; i++) availableDirs.Add(i);
+
+        for (int i = 0; i < dropCount && availableDirs.Count > 0; i++)
+        {
+            // Pick a random loot entry based on drop chance
+            var entry = lootTable.GetRandomEntry();
+            if (entry == null || entry.itemPrefab == null) continue;
+
+            // Pick a random available direction
+            int dirIdx = availableDirs[Random.Range(0, availableDirs.Count)];
+            availableDirs.Remove(dirIdx);
+            Vector2 dropPos = (Vector2)transform.position + directions[dirIdx] * dropRadius;
+
+            // Check for obstacles
+            Collider2D hit = Physics2D.OverlapCircle(dropPos, 0.2f, obstacleMask);
+            if (hit == null)
+            {
+                Instantiate(entry.itemPrefab, dropPos, Quaternion.identity);
+            }
+        }
     }
 }
