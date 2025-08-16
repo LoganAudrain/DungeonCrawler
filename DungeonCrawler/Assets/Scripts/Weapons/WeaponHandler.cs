@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,24 +7,32 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] WeaponData weapon;
     [SerializeField] CharacterStats characterStats;
 
+    private CharacterStats m_characterStats;
     private bool m_isAttacking = false;
+
+    public void Start()
+    {
+        m_characterStats = GetComponent<CharacterStats>();
+
+        throw new MissingComponentException("CharacterStats component is required but was not found.");
+    }
 
     public void UseWeapon(Vector2 aimDir)
     {
-        if(weapon == null) return;
+        if (weapon == null) return;
 
         switch (weapon.type)
         {
             case WeaponType.Melee:
-            {
-                UseMeleeWeapon(aimDir);
-                break;
-            }
+                {
+                    UseMeleeWeapon(aimDir);
+                    break;
+                }
             case WeaponType.Ranged:
-            {
-                UseRangedWeapon(aimDir);
-                break;
-            }
+                {
+                    UseRangedWeapon(aimDir);
+                    break;
+                }
         }
     }
 
@@ -46,10 +55,13 @@ public class WeaponHandler : MonoBehaviour
             trans
         );
 
+        WeaponCollisionObserver observer = weaponInstance.AddComponent<WeaponCollisionObserver>();
+        observer.OnHit += HandleMeleeHit;
+
         int direction = (aimDir.x >= 0) ? -1 : 1;
         Vector3 spawnTimeRot = new(weapon.spawnTimeRotationX, weapon.spawnTimeRotationY, weapon.spawnTimeRotationZ);
 
-        if(direction < 0)
+        if (direction < 0)
         {
             Vector3 inversed = spawnTimeRot;
             inversed.z = -inversed.z;
@@ -60,7 +72,7 @@ public class WeaponHandler : MonoBehaviour
         {
             weaponInstance.transform.localRotation = Quaternion.Euler(spawnTimeRot);
         }
-        
+
 
         float duration = Mathf.Max(weapon.swingTime, weapon.thrustTime);
         StartCoroutine(SwingWeapon(weaponInstance.transform, aimDir, duration));
@@ -71,11 +83,38 @@ public class WeaponHandler : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    { //because melee weapons are children of the player, the melee weapons collisions go here
-
+    private void HandleMeleeHit(Collider2D collision)
+    {
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        damageable?.TakeDamage(weapon.damage + (characterStats.GetStrength * 2));
+
+        damageable?.TakeDamage(weapon.damage);
+
+        //apply knockback
+        Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+        CharacterStats stats = collision.gameObject.GetComponent<CharacterStats>();
+
+        if (rb != null && stats != null)
+        {
+            Vector2 knockbackDir = collision.gameObject.transform.position - transform.position;
+            knockbackDir.Normalize();
+
+            ApplyKnockback(rb, stats, knockbackDir);
+        }
+    }
+    private void ApplyKnockback(Rigidbody2D rb, CharacterStats stats, Vector2 knockbackDir)
+    {
+        float force = Mathf.Max(m_characterStats.GetStrength - stats.GetConstitution, 1f);
+        force *= weapon.knockbackMultiplier;
+
+        StartCoroutine(Knockback(rb, knockbackDir, force, 0.1f));
+    }
+
+    private IEnumerator Knockback(Rigidbody2D rb, Vector2 dir, float force, float duration)
+    {
+        rb.linearVelocity = dir.normalized * force;
+        yield return new WaitForSeconds(duration);
+        rb.linearVelocity = Vector2.zero;
+
     }
 
     private IEnumerator SwingWeapon(Transform weaponTransform, Vector2 aimDir, float duration)
@@ -140,5 +179,15 @@ public class WeaponHandler : MonoBehaviour
         }
 
         m_isAttacking = false;
+    }
+}
+
+public class WeaponCollisionObserver : MonoBehaviour
+{
+    public event Action<Collider2D> OnHit;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        OnHit?.Invoke(other);
     }
 }

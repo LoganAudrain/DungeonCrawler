@@ -26,7 +26,7 @@ public class WeaponData : ScriptableObject
     public float swingTime;
     public float thrustDistance;
     public float thrustTime;
-    public float knockback;
+    public float knockbackMultiplier;
 
     [Space(10)]
     [Header("Misc")]
