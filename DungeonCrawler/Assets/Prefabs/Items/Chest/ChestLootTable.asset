@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a9f6e1e8592df469dd5661c1d126ac, type: 3}
   m_Name: ChestLootTable
   m_EditorClassIdentifier: 
-  lootEntries: []
+  lootEntries:
+  - itemPrefab: {fileID: 8042596503853942181, guid: c4ccdb53ff1d8474ea9485b624cb1a90, type: 3}
+    dropChance: 1
+  - itemPrefab: {fileID: 6291415949817603419, guid: fe33dd57703b18a42ae93861ee28f374, type: 3}
+    dropChance: 0.5
+  - itemPrefab: {fileID: 6291415949817603419, guid: e5a0048d7469dc844aa7201cd43a64b1, type: 3}
+    dropChance: 0.5
