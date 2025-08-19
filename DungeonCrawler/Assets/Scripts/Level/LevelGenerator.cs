@@ -89,6 +89,215 @@ public class LevelGenerator : MonoBehaviour
 #endif
     }
 
+    private Region CreateRegionBetween(Region a, Region b)
+    {
+        bool xMiss = a.bounds.xMin > b.bounds.xMax - HallwaySize + 1 || b.bounds.xMin > a.bounds.xMax - HallwaySize + 1;
+        bool yMiss = a.bounds.yMin > b.bounds.yMax - HallwaySize + 1 || b.bounds.yMin > a.bounds.yMax - HallwaySize + 1;
+
+        if (xMiss && yMiss)
+        {
+            return CreateComplexRegion(a, b);
+        }
+
+        int min, max;
+
+        Vector2Int pos;
+        Vector2Int size;
+
+        if (xMiss)
+        {
+            min = Math.Max(a.bounds.yMin, b.bounds.yMin);
+            max = Math.Min(a.bounds.yMax, b.bounds.yMax);
+
+            pos = new Vector2Int(Math.Min(a.bounds.xMax, b.bounds.xMax), Random.Range(min, max - HallwaySize + 1));
+            size = new Vector2Int(Math.Max(a.bounds.xMin, b.bounds.xMin) - pos.x, HallwaySize);
+
+        }
+        else
+        {
+            min = Math.Max(a.bounds.xMin, b.bounds.xMin);
+            max = Math.Min(a.bounds.xMax, b.bounds.xMax);
+
+            pos = new Vector2Int(Random.Range(min, max - HallwaySize + 1), Math.Min(a.bounds.yMax, b.bounds.yMax));
+            size = new Vector2Int(HallwaySize, Math.Max(a.bounds.yMin, b.bounds.yMin) - pos.y);
+
+        }
+        
+        return new Region(pos, size);
+    }
+
+    private Region CreateComplexRegion(Region a, Region b)
+    {
+        int xMin, yMin, xMax, yMax;
+        bool xMiss = false;
+
+        if (a.bounds.xMin < b.bounds.xMin)
+            xMin = a.bounds.xMin;
+        else
+            xMin = b.bounds.xMin;
+
+        if (a.bounds.yMin < b.bounds.yMin)
+            yMin = a.bounds.yMin;
+        else
+            yMin = b.bounds.yMin;
+
+        if (a.bounds.xMax > b.bounds.xMax)
+            xMax = a.bounds.xMax;
+        else
+            xMax = b.bounds.xMax;
+
+        if (a.bounds.yMax > b.bounds.yMax)
+            yMax = a.bounds.yMax;
+        else
+            yMax = b.bounds.yMax;
+
+
+
+        if (a.bounds.xMin > b.bounds.xMax)
+        {
+            xMax -= a.bounds.width;
+            xMin += b.bounds.width;
+        }
+        else if (b.bounds.xMin > a.bounds.xMax)
+        {
+            xMax -= b.bounds.width;
+            xMin += a.bounds.width;
+        }
+        else if (a.bounds.yMin > b.bounds.yMax)
+        {
+            yMax -= a.bounds.height;
+            yMin += b.bounds.height;
+
+            xMiss = true;
+        }
+        else if (b.bounds.yMin > a.bounds.yMax)
+        {
+            yMax -= b.bounds.height;
+            yMin += a.bounds.height;
+
+            xMiss = true;
+        }
+
+        Vector2Int pos = new Vector2Int(xMin, yMin);
+        Vector2Int size = new Vector2Int(xMax - xMin, yMax - yMin);
+
+        HallRegion hall = new HallRegion(pos, size);
+
+        bool left;
+
+        if (xMiss)
+        {
+            left = a.bounds.center.y > b.bounds.center.y;
+
+            Vector2Int posA = new();
+            Vector2Int sizeA = new();
+            Vector2Int posB = new();
+            Vector2Int sizeB = new();
+
+            if (left)
+            {
+                posA.x = Random.Range(a.bounds.xMin, a.bounds.xMax - HallwaySize + 1);
+                posA.y = (int)hall.bounds.center.y - 1;
+
+                sizeA.x = HallwaySize;
+                sizeA.y = Math.Abs(a.bounds.yMin - (int)hall.bounds.center.y) + 1;
+
+
+                posB.x = Random.Range(b.bounds.xMin, b.bounds.xMax - HallwaySize + 1);
+                posB.y = b.bounds.yMax;
+
+                sizeB.x = HallwaySize;
+                sizeB.y = Math.Abs(b.bounds.yMin - (int)hall.bounds.center.y) + 1;
+            }
+            else
+            {
+                posA.x = Random.Range(b.bounds.xMin, b.bounds.xMax - HallwaySize + 1);
+                posA.y = (int)hall.bounds.center.y - 1;
+
+                sizeA.x = HallwaySize;
+                sizeA.y = Math.Abs(b.bounds.yMin - (int)hall.bounds.center.y) + 1;
+
+
+                posB.x = Random.Range(a.bounds.xMin, a.bounds.xMax - HallwaySize + 1);
+                posB.y = a.bounds.yMax;
+
+                sizeB.x = HallwaySize;
+                sizeB.y = Math.Abs(a.bounds.yMax - (int)hall.bounds.center.y) + 1;
+            }
+
+            hall.boundA = new RectInt(posA, sizeA);
+            hall.boundB = new RectInt(posB, sizeB);
+
+            if (hall.boundA.position.x > hall.boundB.position.x)
+                hall.bounds = new RectInt(new Vector2Int(hall.boundB.xMax, (int)hall.bounds.center.y - 1),
+                    new Vector2Int(hall.boundA.xMin - hall.boundB.xMax, HallwaySize));
+            else
+                hall.bounds = new RectInt(new Vector2Int(hall.boundA.xMax, (int)hall.bounds.center.y - 1),
+                    new Vector2Int(hall.boundB.xMin - hall.boundA.xMax, HallwaySize));
+        }
+        else
+        {
+            left = a.bounds.center.x > b.bounds.center.x;
+
+            Vector2Int posA = new();
+            Vector2Int sizeA = new();
+            Vector2Int posB = new();
+            Vector2Int sizeB = new();
+
+            if (left)
+            {
+                posA.x = (int)hall.bounds.center.x - 1;
+                posA.y = Random.Range(a.bounds.yMin, a.bounds.yMax - HallwaySize + 1);
+
+                sizeA.x = Math.Abs(a.bounds.xMin - (int)hall.bounds.center.x) + 1;
+                sizeA.y = HallwaySize;
+
+
+                posB.x = b.bounds.xMax;
+                posB.y = Random.Range(b.bounds.yMin, b.bounds.yMax - HallwaySize + 1);
+
+                sizeB.x = Math.Abs(b.bounds.xMin - (int)hall.bounds.center.x) + 1;
+                sizeB.y = HallwaySize;
+            }
+            else
+            {
+                posA.x = (int)hall.bounds.center.x - 1;
+                posA.y = Random.Range(b.bounds.yMin, b.bounds.yMax - HallwaySize + 1);
+
+                sizeA.x = Math.Abs(b.bounds.xMin - (int)hall.bounds.center.x) + 1;
+                sizeA.y = HallwaySize;
+
+
+                posB.x = a.bounds.xMax;
+                posB.y = Random.Range(a.bounds.yMin, a.bounds.yMax - HallwaySize + 1);
+
+                sizeB.x = Math.Abs(a.bounds.xMax - (int)hall.bounds.center.x) + 1;
+                sizeB.y = HallwaySize;
+            }
+
+            hall.boundA = new RectInt(posA, sizeA);
+            hall.boundB = new RectInt(posB, sizeB);
+
+            if(hall.boundA.position.y > hall.boundB.position.y)
+                hall.bounds = new RectInt(new Vector2Int((int)hall.bounds.center.x - 1, hall.boundB.yMax), 
+                    new Vector2Int(HallwaySize, hall.boundA.yMin - hall.boundB.yMax));
+            else
+                hall.bounds = new RectInt(new Vector2Int((int)hall.bounds.center.x - 1, hall.boundA.yMax),
+                    new Vector2Int(HallwaySize, hall.boundB.yMin - hall.boundA.yMax));
+        }
+
+#if UNITY_EDITOR
+        Debug.Log("Complex Called!");
+        if(debug && left)
+            DrawRegion(hall, Color.azure, 10000);
+        else
+            DrawRegion(hall, Color.purple, 10000);
+#endif
+
+
+        return hall;
+    }
+
     private void GenerateHallway(ref Block block)
     {
         if (block.Children.Count < 2)
@@ -97,44 +306,10 @@ public class LevelGenerator : MonoBehaviour
             return;
 
 
+        (Region a, Region b) regions = FindClosest(block);
+        block.region = CreateRegionBetween(regions.a, regions.b);
 
-
-        Vector2 Target = FindEdge(block);
-
-
-
-        Region regionA = block.Children[0].region;
-        Region regionB = block.Children[1].region;
-
-        float distance = Vector2.Distance(Target, regionA.bounds.center);
-
-        foreach(Region r in block.Children[0].subRegions)
-        {
-            if(Vector2.Distance(Target, regionA.bounds.center) < distance)
-            {
-                regionA = r;
-            }
-        }
-
-        distance = Vector2.Distance(Target, regionA.bounds.center);
-
-        foreach (Region r in block.Children[1].subRegions)
-        {
-            if (Vector2.Distance(Target, regionA.bounds.center) < distance)
-            {
-                regionB = r;
-            }
-        }
-
-        block.region = new Region(new Vector2Int((int)Target.x - 1, (int)Target.y - 1), new Vector2Int(2, 2));
-
-        Debug.DrawLine(regionA.bounds.center, regionB.bounds.center, Color.white, 10000);
-
-
-
-
-
-
+        hallways.Add(block.region);
 
 
 
@@ -146,42 +321,62 @@ public class LevelGenerator : MonoBehaviour
 #endif
     }
 
-    private Vector2 FindEdge(Block block)
+    private (Region, Region) FindClosest(Block block)
     {
-        if (block.Children.Count < 2)
-            return new Vector2();
+        (Region a, Region b) closest = (block.Children[0].region, block.Children[1].region);
+        (int x, int y) distance = GetRegionDistance(closest.a, closest.b);
 
-        Vector2 BlockACenter = block.Children[0].bounds.center;
-        Vector2 BlockBCenter = block.Children[1].bounds.center;
-
-        Vector2 Edge = BlockACenter;
-
-        if(BlockACenter.x != BlockBCenter.x)
+        foreach(Region a in block.Children[0].GetRegions())
         {
-            if(BlockACenter.x > BlockBCenter.x)
+            foreach(Region b in block.Children[1].GetRegions())
             {
-                Edge.x = block.Children[0].bounds.xMin;
-            }
-            else
-            {
-                Edge.x = block.Children[1].bounds.xMin;
-            }
-        }
-        else
-        {
-            if (BlockACenter.y > BlockBCenter.y)
-            {
-                Edge.y = block.Children[0].bounds.yMin;
-            }
-            else
-            {
-                Edge.y = block.Children[1].bounds.yMin;
+                (int x, int y) dis = GetRegionDistance(a, b);
+
+                if(dis.x <= distance.x && dis.y < distance.y ||
+                   dis.x < distance.x && dis.y <= distance.y ||
+                   dis.x + dis.y < distance.x + distance.y ||
+                   (dis.x == 0 && dis.y <= distance.x + distance.y + 2) || 
+                   (dis.y == 0 && dis.x <= distance.x + distance.y + 2))
+                {
+                    distance = dis;
+                    closest = (a, b);
+                }
             }
         }
 
-        return Edge;
+
+        return closest;
     }
 
+    private (int x, int y) GetRegionDistance(Region a, Region b)
+    {
+        (int x, int y) distance = (Math.Abs(a.bounds.xMin - b.bounds.xMin), Math.Abs(a.bounds.yMin - b.bounds.yMin));
+
+
+        if(a.bounds.xMin > b.bounds.xMin && a.bounds.xMin < b.bounds.xMax ||
+           b.bounds.xMin > a.bounds.xMin && b.bounds.xMin < a.bounds.xMax)
+        {
+            distance.x = 0;
+        }
+
+        if(a.bounds.yMin > b.bounds.yMin && a.bounds.yMin < b.bounds.yMax ||
+           b.bounds.yMin > a.bounds.yMin && b.bounds.yMin < a.bounds.yMax)
+        {
+            distance.y = 0;
+        }
+
+        if (Math.Abs(a.bounds.xMin - b.bounds.xMax + 1) < distance.x)
+            distance.x = Math.Abs(a.bounds.xMin - b.bounds.xMax + 1);
+        if (Math.Abs(a.bounds.xMax - b.bounds.xMin + 1) < distance.x)
+            distance.x = Math.Abs(a.bounds.xMax - b.bounds.xMin + 1);
+
+        if (Math.Abs(a.bounds.yMin - b.bounds.yMax + 1) < distance.y)
+            distance.y = Math.Abs(a.bounds.yMin - b.bounds.yMax + 1);
+        if (Math.Abs(a.bounds.yMax - b.bounds.yMin + 1) < distance.y)
+            distance.y = Math.Abs(a.bounds.yMax - b.bounds.yMin + 1);
+
+        return distance;
+    }
     private void BuildRoom(Region room, TileBase floortile)
     {
         foreach (Vector2Int pos in room.bounds.allPositionsWithin)
@@ -193,7 +388,26 @@ public class LevelGenerator : MonoBehaviour
 
     private void BuildHallway(Region hallway, TileBase floortile)
     {
+        foreach (Vector2Int pos in hallway.bounds.allPositionsWithin)
+        {
+            _wallTiles.SetTile((Vector3Int)pos, null);
+            _groundTiles.SetTile((Vector3Int)pos, floortile);
+        }
 
+        if(hallway.GetType() == typeof(HallRegion))
+        {
+            foreach (Vector2Int pos in ((HallRegion)hallway).boundA.allPositionsWithin)
+            {
+                _wallTiles.SetTile((Vector3Int)pos, null);
+                _groundTiles.SetTile((Vector3Int)pos, floortile);
+            }
+
+            foreach (Vector2Int pos in ((HallRegion)hallway).boundB.allPositionsWithin)
+            {
+                _wallTiles.SetTile((Vector3Int)pos, null);
+                _groundTiles.SetTile((Vector3Int)pos, floortile);
+            }
+        }
     }
 
 
@@ -359,7 +573,7 @@ public class LevelGenerator : MonoBehaviour
         if (region.GetType() == typeof(HallRegion))
         {
             DrawRect(((HallRegion)region).boundA, color, duration);
-            DrawRect(((HallRegion)region).boundB, color, duration);
+            DrawRect(((HallRegion)region).boundB, Color.white, duration);
             
         }
     }
