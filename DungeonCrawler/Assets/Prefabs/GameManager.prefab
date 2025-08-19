@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1266939145442243599
+--- !u!1 &712359142227394579
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5367770914939312406}
-  - component: {fileID: 2710619832955238800}
+  - component: {fileID: 918068137723285413}
+  - component: {fileID: 8291813891085128036}
+  - component: {fileID: 3498043729519679854}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,36 +18,61 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5367770914939312406
+--- !u!4 &918068137723285413
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266939145442243599}
+  m_GameObject: {fileID: 712359142227394579}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 729.23676, y: 386.47375, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 203.43427, y: -32.592194, z: 0}
+  m_LocalScale: {x: 0.8591768, y: 0.8591768, z: 0.8591768}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2710619832955238800
+--- !u!114 &8291813891085128036
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266939145442243599}
+  m_GameObject: {fileID: 712359142227394579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56d356a5713eeb4fb7ec51f804321ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactText: {fileID: 0}
+--- !u!114 &3498043729519679854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712359142227394579}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8518cadd20c5f645a68de2c72e3b5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryMenu: {fileID: 0}
+  StatMenu: {fileID: 0}
   CoinCountText: {fileID: 0}
+  CurrantHealthText: {fileID: 0}
+  CurrantManaText: {fileID: 0}
+  MaxHealthText: {fileID: 0}
+  MaxManaText: {fileID: 0}
+  StrengthText: {fileID: 0}
+  ConstitutionText: {fileID: 0}
+  DexterityText: {fileID: 0}
+  IntelligenceText: {fileID: 0}
   itemListParent: {fileID: 0}
   itemSlotPrefab: {fileID: 1812816170144493286, guid: e62adf51bca4d7e48b378fb29097a47c, type: 3}
   playerInventory: {fileID: 0}
+  CharacterStats: {fileID: 0}
   CoinCount: 0
+  availableSP: 10
+  SPText: {fileID: 0}

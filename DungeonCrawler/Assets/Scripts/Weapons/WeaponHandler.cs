@@ -14,7 +14,10 @@ public class WeaponHandler : MonoBehaviour
     {
         m_characterStats = GetComponent<CharacterStats>();
 
-        throw new MissingComponentException("CharacterStats component is required but was not found.");
+        if (m_characterStats == null)
+        {
+            throw new MissingComponentException("CharacterStats component is required but was not found.");
+        }
     }
 
     public void UseWeapon(Vector2 aimDir)

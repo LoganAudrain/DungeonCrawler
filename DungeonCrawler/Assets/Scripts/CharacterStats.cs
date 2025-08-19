@@ -28,9 +28,29 @@ public class CharacterStats : MonoBehaviour, IDamageable
     public int GetIntelligence => Intelligence;
 
     public void IncreaseStrength() { Strength++; RecalculateStats(); }
-    public void IncreaseConstitution() { Constitution++; RecalculateStats(); }
+    public void IncreaseConstitution()
+    {
+        int oldMax = GetMaxHealth;
+        Constitution++;
+        RecalculateStats();
+        int newMax = GetMaxHealth;
+        int diff = newMax - oldMax;
+        m_currentHealth += diff;
+        if (m_currentHealth > newMax)
+            m_currentHealth = newMax;
+    }
     public void IncreaseDexterity() { Dexterity++; RecalculateStats(); }
-    public void IncreaseIntelligence() { Intelligence++; RecalculateStats(); }
+    public void IncreaseIntelligence()
+    {
+        int oldMax = GetMaxMana;
+        Intelligence++;
+        RecalculateStats();
+        int newMax = GetMaxMana;
+        int diff = newMax - oldMax;
+        m_currentMana += diff;
+        if (m_currentMana > newMax)
+            m_currentMana = newMax;
+    }
 
     public void DecreaseStrength() { if (Strength > 1) { Strength--; RecalculateStats(); } }
     public void DecreaseConstitution() { if (Constitution > 1) { Constitution--; RecalculateStats(); } }
@@ -40,8 +60,8 @@ public class CharacterStats : MonoBehaviour, IDamageable
     void Start()
     {
         RecalculateStats();
-        m_currentHealth = MaxHealth;
-        m_currentMana = MaxMana;
+        m_currentHealth = GetMaxHealth;
+        m_currentMana = GetMaxMana;
     }
 
     private void RecalculateStats()

@@ -7,6 +7,8 @@ public class Chest : MonoBehaviour
     private Animator animator;
     private bool isOpen = false;
     private bool playerInRange = false;
+    private int playerTriggerCount = 0;
+    private GameManager gameManager;
 
     [Header("Chest Settings")]
     [SerializeField] private GameObject mimicPrefab;
@@ -20,9 +22,15 @@ public class Chest : MonoBehaviour
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private float dropRadius = 1.0f;
 
+
     void Start()
     {
         animator = GetComponent<Animator>();
+        gameManager = FindFirstObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            gameManager.HideinteractText(); // Hide interact text at start
+        }
     }
 
     void Update()
@@ -40,7 +48,13 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = true;
+            playerTriggerCount++;
+            playerInRange = playerTriggerCount > 0;
+            if (gameManager != null)
+            {
+                gameManager.ShowinteractText(); // Show interact text when player is in range
+            }
+
         }
     }
 
@@ -48,7 +62,12 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerInRange = false;
+            playerTriggerCount = Mathf.Max(0, playerTriggerCount - 1);
+            playerInRange = playerTriggerCount > 0;
+            if (gameManager != null && !playerInRange)
+            {
+                gameManager.HideinteractText(); // Hide interact text when player leaves range
+            }
         }
     }
 
@@ -79,7 +98,7 @@ public class Chest : MonoBehaviour
 
       
     }
-    void DropLoot()
+    public void DropLoot()
     {
         if (lootTable == null || lootTable.lootEntries == null || lootTable.lootEntries.Length == 0)
             return;
