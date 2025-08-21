@@ -10,7 +10,8 @@ public class ItemStats : ScriptableObject
     public enum ItemType
     {
         Consumable,
-        Coin
+        Coin,
+        Weapon
     }
     public ItemType itemType;
 
@@ -21,6 +22,10 @@ public class ItemStats : ScriptableObject
     [Range( 0 , 100)] public int HeathHealAmount;
     [Range(0, 100)] public int ManaHealAmount;
     [Range(1, 100)] public int maxStack;
+
+    [Space(10)]
+    [Tooltip("If item type is not 'weapon', leave blank")]
+    public WeaponData weaponData;
 
 
 }

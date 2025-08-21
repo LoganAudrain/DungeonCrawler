@@ -21,4 +21,9 @@ MonoBehaviour:
   projectileSpeed: 0
   swingAngle: 180
   swingTime: 0.3
-  knockback: 0
+  thrustDistance: 0
+  thrustTime: 0
+  knockbackMultiplier: 1
+  spawnTimeRotationX: 0
+  spawnTimeRotationY: 0
+  spawnTimeRotationZ: 0

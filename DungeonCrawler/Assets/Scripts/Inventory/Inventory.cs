@@ -100,7 +100,16 @@ public class Inventory : MonoBehaviour
             OnInventoryChanged?.Invoke();
             return true;
         }
-        return false;
+        else if (item.itemType == ItemStats.ItemType.Weapon)
+        {
+            WeaponHandler weaponHandler = GetComponent<WeaponHandler>();
+            
+            if (weaponHandler != null)
+            {
+                weaponHandler.ChangeWeapon(item.weaponData);
+            }
+        }
+            return false;
     }
 
     public bool DropItemAtSlot(int slotIndex, out ItemStats droppedItem)
