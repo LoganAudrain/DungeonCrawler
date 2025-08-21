@@ -18,7 +18,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private float emptyChance = 0.2f; // 20% chance to be empty
 
     [Header("Loot Table")]
-    [SerializeField] private LootTable lootTable;
+    [SerializeField] private LootTable[] lootTables;
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private float dropRadius = 1.0f;
 
@@ -86,7 +86,7 @@ public class Chest : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        else if (roll < mimicChance + emptyChance)
+        else if (roll < emptyChance)
         {
             animator.SetBool("isEmpty", true); // Play empty animation
             Debug.Log("Chest is empty!");
@@ -100,9 +100,17 @@ public class Chest : MonoBehaviour
     }
     public void DropLoot()
     {
-        if (lootTable == null || lootTable.lootEntries == null || lootTable.lootEntries.Length == 0)
+        if (lootTables == null || lootTables.Length == 0)
+        {
             return;
-
+        }
+        // Pick a random loot table from the array
+        LootTable lootTable = lootTables[Random.Range(0, lootTables.Length)];
+        if (lootTable == null || lootTable.lootEntries == null || lootTable.lootEntries.Length == 0)
+        {
+              return; 
+        }
+          
         int dropCount = Random.Range(3, 6); // 3 to 5 items
         Vector2[] directions = {
             Vector2.up, Vector2.down, Vector2.left, Vector2.right,

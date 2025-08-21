@@ -48,9 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mimicPrefab: {fileID: 8606257429457485419, guid: 9363a60a412f46245835ec78acdc2cf6, type: 3}
-  mimicChance: 0
-  emptyChance: 1
-  lootTable: {fileID: 11400000, guid: 78932d167a34d4946b1ff882813e921b, type: 2}
+  mimicChance: 0.1
+  emptyChance: 0.3
+  lootTables:
+  - {fileID: 11400000, guid: 78932d167a34d4946b1ff882813e921b, type: 2}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 0

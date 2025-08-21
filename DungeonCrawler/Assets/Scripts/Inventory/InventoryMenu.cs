@@ -52,26 +52,10 @@ public class InventoryMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
-        {
-            bool showMenu = !inventoryMenu.activeSelf ;
-            inventoryMenu.SetActive(showMenu);
-            StatMenu.SetActive(showMenu);
-
-            if (showMenu)
-            {
-                Time.timeScale = 0f; // Pause the game
-                ShowInventoryContents();
-                ShowStats();
-            }
-            else
-            {
-                Time.timeScale = 1f; // Resume the game
-                InventoryItemUI.HideAllActionBoxes(); // Hide use/drop buttons
-            }
-        }
         if (inventoryMenu.activeSelf)
         {
+            ShowInventoryContents();
+            ShowStats();
             HandleStatPointInput();
         }
     }
