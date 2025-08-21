@@ -54,8 +54,6 @@ public class InventoryMenu : MonoBehaviour
     {
         if (inventoryMenu.activeSelf)
         {
-            ShowInventoryContents();
-            ShowStats();
             HandleStatPointInput();
         }
     }
@@ -157,7 +155,7 @@ public class InventoryMenu : MonoBehaviour
             ShowInventoryContents();
     }
 
-    void ShowStats()
+    public void ShowStats()
     {
         if (CharacterStats == null)
         {
@@ -177,7 +175,7 @@ public class InventoryMenu : MonoBehaviour
             SPText.text = $"{availableSP}";
     }
 
-    void ShowInventoryContents()
+    public void ShowInventoryContents()
     {
         if (playerInventory == null)
         {

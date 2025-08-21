@@ -6,12 +6,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject statMenu;
     [SerializeField] private GameObject pauseMenu;
+    private InventoryMenu inventoryMenuComponent;
 
     private GameObject currentActiveMenu;
     private void Start()
     {
         HideAllMenus();
         HideinteractText();
+        inventoryMenuComponent = FindFirstObjectByType<InventoryMenu>();
+
     }
 
     void Update()
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
             if (UnityEngine.InputSystem.Keyboard.current.eKey.wasPressedThisFrame)
             {
                 ToggleMenu(inventoryMenu, statMenu);
+                inventoryMenuComponent.ShowInventoryContents();
+                inventoryMenuComponent.ShowStats();
             }
             // Pause menu toggle (Escape key)
             if (UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
@@ -73,6 +78,8 @@ public class GameManager : MonoBehaviour
                 {
                     menu.SetActive(true);
                     currentActiveMenu = menu;
+
+
                 }
             }
            
