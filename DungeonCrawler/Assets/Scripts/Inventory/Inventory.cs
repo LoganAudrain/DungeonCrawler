@@ -106,7 +106,9 @@ public class Inventory : MonoBehaviour
             
             if (weaponHandler != null)
             {
+                AddItem(weaponHandler.CurrentWeapon.pickupItemStats);
                 weaponHandler.ChangeWeapon(item.weaponData);
+                RemoveItem(item);
             }
         }
             return false;

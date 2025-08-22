@@ -10,6 +10,8 @@ public class WeaponHandler : MonoBehaviour
     private CharacterStats m_characterStats;
     private bool m_isAttacking = false;
 
+    public WeaponData CurrentWeapon => weapon;
+
     public void Start()
     {
         m_characterStats = GetComponent<CharacterStats>();

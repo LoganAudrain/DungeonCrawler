@@ -11,6 +11,11 @@ public class WeaponData : ScriptableObject
     public GameObject prefab;
 
     [Space(10)]
+    [Header("Pickup")]
+    public GameObject pickupPrefab;
+    public ItemStats pickupItemStats;
+
+    [Space(10)]
     [Header("Stats")]
     public int damage;
     public float attackRate;

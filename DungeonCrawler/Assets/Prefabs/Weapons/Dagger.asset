@@ -15,6 +15,8 @@ MonoBehaviour:
   weaponName: Dagger
   type: 0
   prefab: {fileID: 2774881317403337060, guid: c9a4931ad89973545ae5d26ef1d9cbdf, type: 3}
+  pickupPrefab: {fileID: 8436776853270092525, guid: 96c8c7ef9c1b5ec4b8069ae40aaf19e0, type: 3}
+  pickupItemStats: {fileID: 11400000, guid: a2111f0240481f4499cfa0e3e9c4a5a3, type: 2}
   damage: 1
   attackRate: 0.4
   projectilePrefab: {fileID: 0}
@@ -23,7 +25,7 @@ MonoBehaviour:
   swingTime: 0
   thrustDistance: 0.2
   thrustTime: 0.25
-  knockback: 0
+  knockbackMultiplier: 0
   spawnTimeRotationX: 0
   spawnTimeRotationY: 0
   spawnTimeRotationZ: 90
