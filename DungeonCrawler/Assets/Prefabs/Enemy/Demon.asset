@@ -16,7 +16,7 @@ MonoBehaviour:
   attackRangeMelee: 1
   attackRangeRanged: 5
   attackCooldown: 2
-  meleeDamage: 10
+  meleeDamage: 5
   projectilePrefab: {fileID: 8634996196177521226, guid: 563f46e6e0be91a45957ff689d2a1602, type: 3}
   projectileSpeed: 5
   flipProjectile: 1

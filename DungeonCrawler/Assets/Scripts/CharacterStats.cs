@@ -17,9 +17,9 @@ public class CharacterStats : MonoBehaviour, IDamageable
     private int m_currentMana;
 
     // Public getters
-    public int GetMaxHealth => MaxHealth + (Constitution * 10);
+    public int GetMaxHealth => (MaxHealth - 10)+ (Constitution * 10);
     public int GetCurrentHealth => m_currentHealth;
-    public int GetMaxMana => MaxMana + (Intelligence * 3);
+    public int GetMaxMana => (MaxMana - 3) + (Intelligence * 3);
     public int GetCurrentMana => m_currentMana; // Assuming current mana is same as max mana for now
 
     public int GetStrength => Strength;
