@@ -34,6 +34,9 @@ public class InventoryMenu : MonoBehaviour
     private readonly string[] statNames = { "Strength", "Constitution", "Dexterity", "Intelligence" };
     private readonly int minStatValue = 1; // Minimum allowed value for stats
 
+    [Header("Stat Buttons")]
+    public GameObject[] increaseStatButtons; // Assign in Inspector: 0=Strength, 1=Constitution, etc.
+    public GameObject[] decreaseStatButtons; // Assign in Inspector: 0=Strength, 1=Constitution, etc.
     void Start()
     {
         inventoryMenu.SetActive(false);
@@ -91,6 +94,7 @@ public class InventoryMenu : MonoBehaviour
     {
         TryDecreaseStat(statIndex);
     }
+
 
     void TryIncreaseStat(int statIndex)
     {
@@ -173,6 +177,16 @@ public class InventoryMenu : MonoBehaviour
 
         if (SPText != null)
             SPText.text = $"{availableSP}";
+
+        // Hide or show stat buttons based on availableSP
+        bool showButtons = availableSP > 0;
+        for (int i = 0; i < statNames.Length; i++)
+        {
+            if (increaseStatButtons != null && i < increaseStatButtons.Length && increaseStatButtons[i] != null)
+                increaseStatButtons[i].SetActive(showButtons);
+            if (decreaseStatButtons != null && i < decreaseStatButtons.Length && decreaseStatButtons[i] != null)
+                decreaseStatButtons[i].SetActive(showButtons);
+        }
     }
 
     public void ShowInventoryContents()

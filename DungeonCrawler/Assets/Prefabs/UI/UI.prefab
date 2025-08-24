@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 6199560219280231819}
   - component: {fileID: 7999007805805721833}
   m_Layer: 5
-  m_Name: Subtracte
+  m_Name: Subtracte(D)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2181,7 +2181,7 @@ GameObject:
   - component: {fileID: 1102277349005132887}
   - component: {fileID: 6891040634648223050}
   m_Layer: 5
-  m_Name: Subtracte
+  m_Name: Subtracte(C)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2450,7 +2450,7 @@ GameObject:
   - component: {fileID: 7650092137310562421}
   - component: {fileID: 7431851376759557326}
   m_Layer: 5
-  m_Name: Add
+  m_Name: Add(C)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2583,7 +2583,7 @@ GameObject:
   - component: {fileID: 4439330703234115879}
   - component: {fileID: 7895427684155036017}
   m_Layer: 5
-  m_Name: Subtracte
+  m_Name: Subtracte(I)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5251,7 +5251,7 @@ GameObject:
   - component: {fileID: 6670696302030543595}
   - component: {fileID: 6558941214268317609}
   m_Layer: 5
-  m_Name: Add
+  m_Name: Add(D)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5686,7 +5686,7 @@ GameObject:
   - component: {fileID: 7842985345233018651}
   - component: {fileID: 1836023799534957021}
   m_Layer: 5
-  m_Name: Subtracte
+  m_Name: Subtracte(S)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6167,7 +6167,7 @@ GameObject:
   - component: {fileID: 1044080335894906066}
   - component: {fileID: 6137030092022055148}
   m_Layer: 5
-  m_Name: Add
+  m_Name: Add(I)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6300,7 +6300,7 @@ GameObject:
   - component: {fileID: 6005597254470049314}
   - component: {fileID: 792980216524502103}
   m_Layer: 5
-  m_Name: Add
+  m_Name: Add(S)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8355,6 +8355,46 @@ PrefabInstance:
       propertyPath: CurrantHealthText
       value: 
       objectReference: {fileID: 7132173140558260084}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: decreaseStatButtons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: increaseStatButtons.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'decreaseStatButtons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6610222073861366730}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'decreaseStatButtons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2614695960596726855}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'decreaseStatButtons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1583615797237405245}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'decreaseStatButtons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2888096500372005191}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'increaseStatButtons.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7258690349798885339}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'increaseStatButtons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2851023228625664187}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'increaseStatButtons.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6417353901241309474}
+    - target: {fileID: 3498043729519679854, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
+      propertyPath: 'increaseStatButtons.Array.data[3]'
+      value: 
+      objectReference: {fileID: 7219718730912074618}
     - target: {fileID: 5367770914939312406, guid: a53a33af72817ff43b2152fa9ecc4047, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.3370475
