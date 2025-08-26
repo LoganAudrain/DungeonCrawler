@@ -43,8 +43,9 @@ public class PlayerHealthManaManager : MonoBehaviour
 
     void Update()
     {
-        UpdateHearts();
+
         UpdateStars();
+        UpdateHearts();
     }
 
     private void UpdateStars()
@@ -86,16 +87,14 @@ public class PlayerHealthManaManager : MonoBehaviour
                 }
                 else if (i == lastOverlayStarIndex && starsToOverlay > 0)
                 {
-                    // The last overlay star: reflect only the remainder above the overlay start for this star
                     int overlayRemainder = currentMana - (overlayStart + i * 10);
-                    if (overlayRemainder >= 10)
+                    if (overlayRemainder >= 9)
                         stars[i].sprite = fullStar;
                     else if (overlayRemainder >= 0)
                         stars[i].sprite = halfStar;
                     else
                         stars[i].sprite = emptyStar;
                     stars[i].color = overlayColor;
-                    //Debug.Log($"[PlayerHealthManaManager] Overlay star index {i} | overlayRemainder: {overlayRemainder} | sprite: {stars[i].sprite.name} | color: {overlayColor}");
                 }
                 else
                 {
@@ -115,6 +114,8 @@ public class PlayerHealthManaManager : MonoBehaviour
             }
         }
     }
+
+
 
     private void UpdateHearts()
     {
@@ -166,6 +167,7 @@ public class PlayerHealthManaManager : MonoBehaviour
                     hearts[i].color = overlayColor;
                     //Debug.Log($"[PlayerHealthManaManager] Overlay heart index {i} | overlayRemainder: {overlayRemainder} | sprite: {hearts[i].sprite.name} | color: {overlayColor}");
                 }
+
                 else
                 {
                     // Non-overlay hearts: normal color and status
