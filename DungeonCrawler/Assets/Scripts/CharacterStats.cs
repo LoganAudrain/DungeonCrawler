@@ -13,14 +13,22 @@ public class CharacterStats : MonoBehaviour, IDamageable
     [SerializeField] int Dexterity = 1;
     [SerializeField] int Intelligence = 1;
 
+    [Header("Regeneration (must be multiple of 5)")]
+   
+    [SerializeField] int ManaRegenRate = 5;
+
     private int m_currentHealth;
     private int m_currentMana;
+
+    private float m_regenTimer = 0f;
+    [SerializeField] private float m_regenInterval = 1f; // Regenerate every 1 second
+
 
     // Public getters
     public int GetMaxHealth => (MaxHealth - 10)+ (Constitution * 10);
     public int GetCurrentHealth => m_currentHealth;
-    public int GetMaxMana => (MaxMana - 3) + (Intelligence * 10);
-    public int GetCurrentMana => m_currentMana; // Assuming current mana is same as max mana for now
+    public int GetMaxMana => (MaxMana - 10) + (Intelligence * 10);
+    public int GetCurrentMana => m_currentMana; 
 
     public int GetStrength => Strength;
     public int GetConstitution => Constitution;
@@ -53,9 +61,39 @@ public class CharacterStats : MonoBehaviour, IDamageable
     }
 
     public void DecreaseStrength() { if (Strength > 1) { Strength--; RecalculateStats(); } }
-    public void DecreaseConstitution() { if (Constitution > 1) { Constitution--; RecalculateStats(); } }
+    public void DecreaseConstitution()
+    {
+        if (Constitution > 1)
+        {
+            int oldMax = GetMaxHealth;
+            float percent = (float)m_currentHealth / oldMax;
+            Constitution--;
+            RecalculateStats();
+            int newMax = GetMaxHealth;
+            m_currentHealth = Mathf.FloorToInt(percent * newMax);
+            if (m_currentHealth > newMax)
+                m_currentHealth = newMax;
+            // Snap to nearest lower multiple of 5
+            m_currentHealth = (m_currentHealth / 5) * 5;
+        }
+    }
     public void DecreaseDexterity() { if (Dexterity > 1) { Dexterity--; RecalculateStats(); } }
-    public void DecreaseIntelligence() { if (Intelligence > 1) { Intelligence--; RecalculateStats(); } }
+    public void DecreaseIntelligence()
+    {
+        if (Intelligence > 1)
+        {
+            int oldMax = GetMaxMana;
+            float percent = (float)m_currentMana / oldMax;
+            Intelligence--;
+            RecalculateStats();
+            int newMax = GetMaxMana;
+            m_currentMana = Mathf.FloorToInt(percent * newMax);
+            if (m_currentMana > newMax)
+                m_currentMana = newMax;
+            // Snap to nearest lower multiple of 5
+            m_currentMana = (m_currentMana / 5) * 5;
+        }
+    }
 
     void Start()
     {
@@ -64,6 +102,27 @@ public class CharacterStats : MonoBehaviour, IDamageable
         m_currentMana = GetMaxMana;
     }
 
+    void Update()
+    {
+        Regenerate();
+    }
+
+    private void Regenerate()
+    {
+        m_regenTimer += Time.deltaTime;
+        if (m_regenTimer >= m_regenInterval)
+        {
+            m_regenTimer = 0f;
+
+            // Mana regen (power of 5)
+            if (m_currentMana < GetMaxMana)
+            {
+                m_currentMana += ManaRegenRate;
+                if (m_currentMana > GetMaxMana)
+                    m_currentMana = GetMaxMana;
+            }
+        }
+    }
     private void RecalculateStats()
     {
         // Optionally clamp current health/mana to new max

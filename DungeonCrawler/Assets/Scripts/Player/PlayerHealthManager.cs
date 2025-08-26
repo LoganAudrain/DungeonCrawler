@@ -86,14 +86,16 @@ public class PlayerHealthManaManager : MonoBehaviour
                 }
                 else if (i == lastOverlayStarIndex && starsToOverlay > 0)
                 {
-                    // The last overlay star: reflect mana status and overlay color
-                    if (manaForThisStar >= 10)
+                    // The last overlay star: reflect only the remainder above the overlay start for this star
+                    int overlayRemainder = currentMana - (overlayStart + i * 10);
+                    if (overlayRemainder >= 10)
                         stars[i].sprite = fullStar;
-                    else if (manaForThisStar >= 5)
+                    else if (overlayRemainder >= 0)
                         stars[i].sprite = halfStar;
                     else
                         stars[i].sprite = emptyStar;
                     stars[i].color = overlayColor;
+                    //Debug.Log($"[PlayerHealthManaManager] Overlay star index {i} | overlayRemainder: {overlayRemainder} | sprite: {stars[i].sprite.name} | color: {overlayColor}");
                 }
                 else
                 {
@@ -153,14 +155,16 @@ public class PlayerHealthManaManager : MonoBehaviour
                 }
                 else if (i == lastOverlayHeartIndex && heartsToOverlay > 0)
                 {
-                    // The last overlay heart: reflect health status and overlay color
-                    if (healthForThisHeart >= 10)
+                    // The last overlay heart: reflect only the remainder above the overlay start for this heart
+                    int overlayRemainder = currentHealth - (overlayStart + i * 10);
+                    if (overlayRemainder >= 10)
                         hearts[i].sprite = fullHeart;
-                    else if (healthForThisHeart >= 5)
+                    else if (overlayRemainder >= 0)
                         hearts[i].sprite = halfHeart;
                     else
                         hearts[i].sprite = emptyHeart;
                     hearts[i].color = overlayColor;
+                    //Debug.Log($"[PlayerHealthManaManager] Overlay heart index {i} | overlayRemainder: {overlayRemainder} | sprite: {hearts[i].sprite.name} | color: {overlayColor}");
                 }
                 else
                 {
