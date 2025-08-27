@@ -159,6 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 11400000, guid: c6f02959f6da468408a5568931949bf5, type: 2}
+  characterStats: {fileID: 0}
 --- !u!114 &8854861580244916766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +178,8 @@ MonoBehaviour:
   Constitution: 1
   Dexterity: 1
   Intelligence: 1
+  ManaRegenRate: 5
+  m_regenInterval: 1
 --- !u!61 &7785994912158559144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1 &6162431757423183390
 GameObject:
   m_ObjectHideFlags: 0

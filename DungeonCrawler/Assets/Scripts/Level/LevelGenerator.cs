@@ -16,23 +16,14 @@ public class LevelGenerator : MonoBehaviour
 #if UNITY_EDITOR
     [SerializeField] private bool debug = false;
 #endif
+    [SerializeField] private bool autoGenerate = false;
+
+    [SerializeField] private LevelSpawnSettings spawnSettings;
+    [SerializeField] private LevelGenSettings genSettings;
 
     [SerializeField] private Tilemap _groundTiles;
     [SerializeField] private Tilemap _wallTiles;
     [SerializeField] private Tilemap _borderTiles;
-
-    [SerializeField] private int MapSizeX = 100, MapSizeY = 100;
-    [SerializeField] private int MinRoomSize = 6;
-    [SerializeField] private int HallwaySize = 2;
-    [SerializeField] private int MinBlockSize = 12;
-    [SerializeField] private int Splits = 5;
-
-
-
-    [SerializeField] private List<TileBase> WallTiles;
-    [SerializeField] private List<TileBase> FloorTiles;
-    [SerializeField] private TileBase VoidTile;
-
 
     [SerializeField] private List<Region> rooms;
     [SerializeField] private List<Region> hallways;
@@ -40,7 +31,8 @@ public class LevelGenerator : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GenerateLevel();
+        if(autoGenerate)
+            GenerateLevel();
     }
 
 
@@ -48,35 +40,53 @@ public class LevelGenerator : MonoBehaviour
 
     public void GenerateLevel()
     {
+        ClearLevel();
+        spawnSettings.Init();
+
         GenerateFill();
 
-        Block block = new Block(new Vector2Int(-MapSizeX / 2, -MapSizeY / 2), new Vector2Int(MapSizeX, MapSizeY));
-        block.depth = Splits;
+        Block block = new Block(new Vector2Int(-genSettings.MapSizeX / 2, -genSettings.MapSizeY / 2), new Vector2Int(genSettings.MapSizeX, genSettings.MapSizeY));
+        block.depth = genSettings.Splits;
         SplitBlocks(ref block);
 
+        Debug.Log("Generated!");
 
+        BuildLevel();
+        
+    }
 
+    public void MovePlayer(GameObject player)
+    {
+        player.transform.position = rooms[Random.Range(0, rooms.Count)].bounds.center;
+    }
+
+    private void BuildLevel()
+    {
         foreach (Region r in rooms)
         {
-            BuildRoom(r, FloorTiles[0]);
+            BuildRoom(r, genSettings.FloorTiles[0]);
         }
         foreach (Region r in hallways)
         {
-            BuildHallway(r, FloorTiles[0]);
+            BuildHallway(r, genSettings.FloorTiles[0]);
         }
-        //DrawRoom(r);
-
-        Debug.Log("Generated!");
     }
+
+    private void ClearLevel()
+    {
+        _borderTiles.ClearAllTiles();
+        _groundTiles.ClearAllTiles();
+        _wallTiles.ClearAllTiles();
+    }
+
+    #region GenerateLevel
 
     private void GenerateRoom(ref Block block)
     {
-        Vector2Int pos = new Vector2Int(Random.Range(block.bounds.xMin, block.bounds.xMax - MinRoomSize - 1), Random.Range(block.bounds.yMin, block.bounds.yMax - MinRoomSize - 1));
-        Vector2Int size = new Vector2Int(Random.Range(MinRoomSize, block.bounds.xMax - pos.x - 1), Random.Range(MinRoomSize, block.bounds.yMax - pos.y - 1));
+        Vector2Int pos = new Vector2Int(Random.Range(block.bounds.xMin, block.bounds.xMax - genSettings.MinRoomSize - 1), Random.Range(block.bounds.yMin, block.bounds.yMax - genSettings.MinRoomSize - 1));
+        Vector2Int size = new Vector2Int(Random.Range(genSettings.MinRoomSize, block.bounds.xMax - pos.x - 1), Random.Range(genSettings.MinRoomSize, block.bounds.yMax - pos.y - 1));
 
         block.region = new Region(pos, size);
-
-        BuildRoom(block.region, FloorTiles[0]);
 
         rooms.Add(block.region);
 
@@ -91,8 +101,8 @@ public class LevelGenerator : MonoBehaviour
 
     private Region CreateRegionBetween(Region a, Region b)
     {
-        bool xMiss = a.bounds.xMin > b.bounds.xMax - HallwaySize + 1 || b.bounds.xMin > a.bounds.xMax - HallwaySize + 1;
-        bool yMiss = a.bounds.yMin > b.bounds.yMax - HallwaySize + 1 || b.bounds.yMin > a.bounds.yMax - HallwaySize + 1;
+        bool xMiss = a.bounds.xMin > b.bounds.xMax - genSettings.HallwaySize + 1 || b.bounds.xMin > a.bounds.xMax - genSettings.HallwaySize + 1;
+        bool yMiss = a.bounds.yMin > b.bounds.yMax - genSettings.HallwaySize + 1 || b.bounds.yMin > a.bounds.yMax - genSettings.HallwaySize + 1;
 
         if (xMiss && yMiss)
         {
@@ -109,8 +119,8 @@ public class LevelGenerator : MonoBehaviour
             min = Math.Max(a.bounds.yMin, b.bounds.yMin);
             max = Math.Min(a.bounds.yMax, b.bounds.yMax);
 
-            pos = new Vector2Int(Math.Min(a.bounds.xMax, b.bounds.xMax), Random.Range(min, max - HallwaySize + 1));
-            size = new Vector2Int(Math.Max(a.bounds.xMin, b.bounds.xMin) - pos.x, HallwaySize);
+            pos = new Vector2Int(Math.Min(a.bounds.xMax, b.bounds.xMax), Random.Range(min, max - genSettings.HallwaySize + 1));
+            size = new Vector2Int(Math.Max(a.bounds.xMin, b.bounds.xMin) - pos.x, genSettings.HallwaySize);
 
         }
         else
@@ -118,8 +128,8 @@ public class LevelGenerator : MonoBehaviour
             min = Math.Max(a.bounds.xMin, b.bounds.xMin);
             max = Math.Min(a.bounds.xMax, b.bounds.xMax);
 
-            pos = new Vector2Int(Random.Range(min, max - HallwaySize + 1), Math.Min(a.bounds.yMax, b.bounds.yMax));
-            size = new Vector2Int(HallwaySize, Math.Max(a.bounds.yMin, b.bounds.yMin) - pos.y);
+            pos = new Vector2Int(Random.Range(min, max - genSettings.HallwaySize + 1), Math.Min(a.bounds.yMax, b.bounds.yMax));
+            size = new Vector2Int(genSettings.HallwaySize, Math.Max(a.bounds.yMin, b.bounds.yMin) - pos.y);
 
         }
         
@@ -196,32 +206,32 @@ public class LevelGenerator : MonoBehaviour
 
             if (left)
             {
-                posA.x = Random.Range(a.bounds.xMin, a.bounds.xMax - HallwaySize + 1);
+                posA.x = Random.Range(a.bounds.xMin, a.bounds.xMax - genSettings.HallwaySize + 1);
                 posA.y = (int)hall.bounds.center.y - 1;
 
-                sizeA.x = HallwaySize;
+                sizeA.x = genSettings.HallwaySize;
                 sizeA.y = Math.Abs(a.bounds.yMin - (int)hall.bounds.center.y) + 1;
 
 
-                posB.x = Random.Range(b.bounds.xMin, b.bounds.xMax - HallwaySize + 1);
+                posB.x = Random.Range(b.bounds.xMin, b.bounds.xMax - genSettings.HallwaySize + 1);
                 posB.y = b.bounds.yMax;
 
-                sizeB.x = HallwaySize;
+                sizeB.x = genSettings.HallwaySize;
                 sizeB.y = Math.Abs(b.bounds.yMin - (int)hall.bounds.center.y) + 1;
             }
             else
             {
-                posA.x = Random.Range(b.bounds.xMin, b.bounds.xMax - HallwaySize + 1);
+                posA.x = Random.Range(b.bounds.xMin, b.bounds.xMax - genSettings.HallwaySize + 1);
                 posA.y = (int)hall.bounds.center.y - 1;
 
-                sizeA.x = HallwaySize;
+                sizeA.x = genSettings.HallwaySize;
                 sizeA.y = Math.Abs(b.bounds.yMin - (int)hall.bounds.center.y) + 1;
 
 
-                posB.x = Random.Range(a.bounds.xMin, a.bounds.xMax - HallwaySize + 1);
+                posB.x = Random.Range(a.bounds.xMin, a.bounds.xMax - genSettings.HallwaySize + 1);
                 posB.y = a.bounds.yMax;
 
-                sizeB.x = HallwaySize;
+                sizeB.x = genSettings.HallwaySize;
                 sizeB.y = Math.Abs(a.bounds.yMax - (int)hall.bounds.center.y) + 1;
             }
 
@@ -230,10 +240,10 @@ public class LevelGenerator : MonoBehaviour
 
             if (hall.boundA.position.x > hall.boundB.position.x)
                 hall.bounds = new RectInt(new Vector2Int(hall.boundB.xMax, (int)hall.bounds.center.y - 1),
-                    new Vector2Int(hall.boundA.xMin - hall.boundB.xMax, HallwaySize));
+                    new Vector2Int(hall.boundA.xMin - hall.boundB.xMax, genSettings.HallwaySize));
             else
                 hall.bounds = new RectInt(new Vector2Int(hall.boundA.xMax, (int)hall.bounds.center.y - 1),
-                    new Vector2Int(hall.boundB.xMin - hall.boundA.xMax, HallwaySize));
+                    new Vector2Int(hall.boundB.xMin - hall.boundA.xMax, genSettings.HallwaySize));
         }
         else
         {
@@ -247,32 +257,32 @@ public class LevelGenerator : MonoBehaviour
             if (left)
             {
                 posA.x = (int)hall.bounds.center.x - 1;
-                posA.y = Random.Range(a.bounds.yMin, a.bounds.yMax - HallwaySize + 1);
+                posA.y = Random.Range(a.bounds.yMin, a.bounds.yMax - genSettings.HallwaySize + 1);
 
                 sizeA.x = Math.Abs(a.bounds.xMin - (int)hall.bounds.center.x) + 1;
-                sizeA.y = HallwaySize;
+                sizeA.y = genSettings.HallwaySize;
 
 
                 posB.x = b.bounds.xMax;
-                posB.y = Random.Range(b.bounds.yMin, b.bounds.yMax - HallwaySize + 1);
+                posB.y = Random.Range(b.bounds.yMin, b.bounds.yMax - genSettings.HallwaySize + 1);
 
                 sizeB.x = Math.Abs(b.bounds.xMin - (int)hall.bounds.center.x) + 1;
-                sizeB.y = HallwaySize;
+                sizeB.y = genSettings.HallwaySize;
             }
             else
             {
                 posA.x = (int)hall.bounds.center.x - 1;
-                posA.y = Random.Range(b.bounds.yMin, b.bounds.yMax - HallwaySize + 1);
+                posA.y = Random.Range(b.bounds.yMin, b.bounds.yMax - genSettings.HallwaySize + 1);
 
                 sizeA.x = Math.Abs(b.bounds.xMin - (int)hall.bounds.center.x) + 1;
-                sizeA.y = HallwaySize;
+                sizeA.y = genSettings.HallwaySize;
 
 
                 posB.x = a.bounds.xMax;
-                posB.y = Random.Range(a.bounds.yMin, a.bounds.yMax - HallwaySize + 1);
+                posB.y = Random.Range(a.bounds.yMin, a.bounds.yMax - genSettings.HallwaySize + 1);
 
                 sizeB.x = Math.Abs(a.bounds.xMax - (int)hall.bounds.center.x) + 1;
-                sizeB.y = HallwaySize;
+                sizeB.y = genSettings.HallwaySize;
             }
 
             hall.boundA = new RectInt(posA, sizeA);
@@ -280,10 +290,10 @@ public class LevelGenerator : MonoBehaviour
 
             if(hall.boundA.position.y > hall.boundB.position.y)
                 hall.bounds = new RectInt(new Vector2Int((int)hall.bounds.center.x - 1, hall.boundB.yMax), 
-                    new Vector2Int(HallwaySize, hall.boundA.yMin - hall.boundB.yMax));
+                    new Vector2Int(genSettings.HallwaySize, hall.boundA.yMin - hall.boundB.yMax));
             else
                 hall.bounds = new RectInt(new Vector2Int((int)hall.bounds.center.x - 1, hall.boundA.yMax),
-                    new Vector2Int(HallwaySize, hall.boundB.yMin - hall.boundA.yMax));
+                    new Vector2Int(genSettings.HallwaySize, hall.boundB.yMin - hall.boundA.yMax));
         }
 
 #if UNITY_EDITOR
@@ -377,38 +387,6 @@ public class LevelGenerator : MonoBehaviour
 
         return distance;
     }
-    private void BuildRoom(Region room, TileBase floortile)
-    {
-        foreach (Vector2Int pos in room.bounds.allPositionsWithin)
-        {
-            _wallTiles.SetTile((Vector3Int)pos, null);
-            _groundTiles.SetTile((Vector3Int)pos, floortile);
-        }
-    }
-
-    private void BuildHallway(Region hallway, TileBase floortile)
-    {
-        foreach (Vector2Int pos in hallway.bounds.allPositionsWithin)
-        {
-            _wallTiles.SetTile((Vector3Int)pos, null);
-            _groundTiles.SetTile((Vector3Int)pos, floortile);
-        }
-
-        if(hallway.GetType() == typeof(HallRegion))
-        {
-            foreach (Vector2Int pos in ((HallRegion)hallway).boundA.allPositionsWithin)
-            {
-                _wallTiles.SetTile((Vector3Int)pos, null);
-                _groundTiles.SetTile((Vector3Int)pos, floortile);
-            }
-
-            foreach (Vector2Int pos in ((HallRegion)hallway).boundB.allPositionsWithin)
-            {
-                _wallTiles.SetTile((Vector3Int)pos, null);
-                _groundTiles.SetTile((Vector3Int)pos, floortile);
-            }
-        }
-    }
 
 
 
@@ -438,10 +416,10 @@ public class LevelGenerator : MonoBehaviour
 
     private void SplitBlockX(ref Block block)
     {
-        if (block.bounds.width >= MinBlockSize * 2 + 1)
+        if (block.bounds.width >= genSettings.MinBlockSize * 2 + 1)
         {
             //Horizontal Split
-            int split = Random.Range(MinBlockSize + 1, block.bounds.width - MinBlockSize);
+            int split = Random.Range(genSettings.MinBlockSize + 1, block.bounds.width - genSettings.MinBlockSize);
 
             Block blockA = new Block(new Vector2Int(block.bounds.xMin, block.bounds.yMin), new Vector2Int(split - 1, block.bounds.height));
             Block blockB = new Block(new Vector2Int(block.bounds.xMin + split, block.bounds.yMin), new Vector2Int(block.bounds.width - split, block.bounds.height));
@@ -467,7 +445,7 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            if (block.bounds.height >= MinBlockSize * 2 + 1)
+            if (block.bounds.height >= genSettings.MinBlockSize * 2 + 1)
             {
                 SplitBlockY(ref block);
             }
@@ -480,10 +458,10 @@ public class LevelGenerator : MonoBehaviour
 
     private void SplitBlockY(ref Block block)
     {
-        if (block.bounds.height >= MinBlockSize * 2 + 1)
+        if (block.bounds.height >= genSettings.MinBlockSize * 2 + 1)
         {
             //Vertical Split
-            int split = Random.Range(MinBlockSize + 1, block.bounds.height - MinBlockSize);
+            int split = Random.Range(genSettings.MinBlockSize + 1, block.bounds.height - genSettings.MinBlockSize);
 
             Block blockA = new Block(new Vector2Int(block.bounds.xMin, block.bounds.yMin), new Vector2Int(block.bounds.width, split - 1));
             Block blockB = new Block(new Vector2Int(block.bounds.xMin, block.bounds.yMin + split), new Vector2Int(block.bounds.width, block.bounds.height - split));
@@ -509,7 +487,7 @@ public class LevelGenerator : MonoBehaviour
         }
         else
         {
-            if(block.bounds.width >= MinBlockSize * 2 + 1)
+            if(block.bounds.width >= genSettings.MinBlockSize * 2 + 1)
             {
                 SplitBlockX(ref block);
             }
@@ -521,27 +499,93 @@ public class LevelGenerator : MonoBehaviour
     }
     private void GenerateFill()
     {
-        RectInt bounds = new RectInt((-MapSizeX / 2) - 4, (-MapSizeY / 2) - 4, MapSizeX + 8, MapSizeY + 8);
+        RectInt bounds = new RectInt((-genSettings.MapSizeX / 2) - 4, (-genSettings.MapSizeY / 2) - 4, genSettings.MapSizeX + 8, genSettings.MapSizeY + 8);
 
 
         foreach(Vector2Int pos in bounds.allPositionsWithin)
         {
-            _wallTiles.SetTile(new Vector3Int(pos.x, pos.y), WallTiles[0]);
+            _wallTiles.SetTile(new Vector3Int(pos.x, pos.y), genSettings.WallTiles[0]);
         }
 
         for (int x = bounds.xMin; x < bounds.xMax; x++)
         {
-            _borderTiles.SetTile(new Vector3Int(x, bounds.yMin, 0), VoidTile);
-            _borderTiles.SetTile(new Vector3Int(x, bounds.yMin + 1, 0), VoidTile);
-            _borderTiles.SetTile(new Vector3Int(x, bounds.yMax - 1, 0), VoidTile);
+            _borderTiles.SetTile(new Vector3Int(x, bounds.yMin, 0), genSettings.VoidTile);
+            _borderTiles.SetTile(new Vector3Int(x, bounds.yMin + 1, 0), genSettings.VoidTile);
+            _borderTiles.SetTile(new Vector3Int(x, bounds.yMax - 1, 0), genSettings.VoidTile);
         }
 
         for (int y = bounds.yMin; y < bounds.yMax; y++)
         {
-            _borderTiles.SetTile(new Vector3Int(bounds.xMin, y, 0), VoidTile);
-            _borderTiles.SetTile(new Vector3Int(bounds.xMax - 1, y, 0), VoidTile);
+            _borderTiles.SetTile(new Vector3Int(bounds.xMin, y, 0), genSettings.VoidTile);
+            _borderTiles.SetTile(new Vector3Int(bounds.xMax - 1, y, 0), genSettings.VoidTile);
         }
     }
+    #endregion
+
+    #region BuildLevel
+    private void BuildRoom(Region room, TileBase floortile)
+    {
+        foreach (Vector2Int pos in room.bounds.allPositionsWithin)
+        {
+            _wallTiles.SetTile((Vector3Int)pos, null);
+            _groundTiles.SetTile((Vector3Int)pos, floortile);
+        }
+
+        if (spawnSettings == null || spawnSettings.Room_Spawns.Count == 0)
+            return;
+
+        int selector = Random.Range(0, spawnSettings.Room_Spawn_Weight + 1);
+        int index = 0;
+
+        while(selector > spawnSettings.Room_Spawns[index].weight)
+        {
+            selector -= spawnSettings.Room_Spawns[index].weight;
+            index++;
+        }
+
+        spawnSettings.Room_Spawns[index].spawner.Spawn(room);
+    }
+
+    private void BuildHallway(Region hallway, TileBase floortile)
+    {
+        foreach (Vector2Int pos in hallway.bounds.allPositionsWithin)
+        {
+            _wallTiles.SetTile((Vector3Int)pos, null);
+            _groundTiles.SetTile((Vector3Int)pos, floortile);
+        }
+
+        if(hallway.GetType() == typeof(HallRegion))
+        {
+            foreach (Vector2Int pos in ((HallRegion)hallway).boundA.allPositionsWithin)
+            {
+                _wallTiles.SetTile((Vector3Int)pos, null);
+                _groundTiles.SetTile((Vector3Int)pos, floortile);
+            }
+
+            foreach (Vector2Int pos in ((HallRegion)hallway).boundB.allPositionsWithin)
+            {
+                _wallTiles.SetTile((Vector3Int)pos, null);
+                _groundTiles.SetTile((Vector3Int)pos, floortile);
+            }
+        }
+
+
+        if (spawnSettings == null || spawnSettings.Hall_Spawns.Count == 0)
+            return;
+
+        int selector = Random.Range(0, spawnSettings.Hall_Spawn_Weight + 1);
+        int index = 0;
+
+        while (selector > spawnSettings.Hall_Spawns[index].weight)
+        {
+            selector -= spawnSettings.Hall_Spawns[index].weight;
+            index++;
+        }
+
+        spawnSettings.Hall_Spawns[index].spawner.Spawn(hallway);
+    }
+
+    #endregion
 
 #if UNITY_EDITOR
     private void DrawRect(RectInt rect, Color color,  float duration)

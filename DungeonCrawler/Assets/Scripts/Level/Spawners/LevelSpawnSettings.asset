@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39d8fb059aefe549b621cb5305d00e8, type: 3}
+  m_Name: LevelSpawnSettings
+  m_EditorClassIdentifier: 
+  Room_Spawn_Min: 3
+  Room_Spawn_Max: 7
+  Room_Spawns:
+  - spawnable: {fileID: 0}
+    weight: 1
+  Room_Spawn_Weight: 1
+  Hall_Spawn_Min: 0
+  Hall_Spawn_Max: 3
+  Hall_Spawns: []
+  Hall_Spawn_Weight: 0
