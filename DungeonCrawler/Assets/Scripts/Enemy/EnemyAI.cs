@@ -17,6 +17,7 @@ public class EnemyAI : MonoBehaviour
 
     private Transform target;
     private float attackTimer;
+    private bool isAttacking = false;
 
 
     void Start()
@@ -88,7 +89,10 @@ public class EnemyAI : MonoBehaviour
     void HandleMelee(float distance)
     {
         if (distance > attackData.attackRangeMelee)
+        {
+            isAttacking = false;
             MoveTowardsTarget();
+        }
         else
             Attack();
     }
@@ -96,13 +100,18 @@ public class EnemyAI : MonoBehaviour
     void HandleRanged(float distance)
     {
         if (distance > attackData.attackRangeRanged)
+        {
+            isAttacking = false;
             MoveTowardsTarget();
+        }
         else
             Attack();
     }
 
     void MoveTowardsTarget()
     {
+        if (isAttacking) return;
+
         Vector2 dir = (target.position - transform.position).normalized;
 
         Vector3 movement = new Vector3(dir.x, dir.y, 0f);
@@ -129,7 +138,14 @@ public class EnemyAI : MonoBehaviour
     void Attack()
     {
         // Stop movement animation when attacking
-        animator.SetFloat("speed", 0f);
+
+
+        isAttacking = true;
+
+        float targetSpeed = 0f;
+        float dampTime = 0.01f;
+
+        animator.SetFloat("speed", targetSpeed, dampTime, Time.deltaTime);
 
         if (attackTimer > 0) return;
 
@@ -153,7 +169,7 @@ public class EnemyAI : MonoBehaviour
             }
 
         }
-
+       
         attackTimer = attackData.attackCooldown;
     }
 }
