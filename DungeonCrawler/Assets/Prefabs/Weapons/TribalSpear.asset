@@ -15,7 +15,9 @@ MonoBehaviour:
   weaponName: Tribal Spear
   type: 0
   prefab: {fileID: 8282690354434474279, guid: eb3bda3354c50804892131b7e3839343, type: 3}
-  damage: 1
+  pickupPrefab: {fileID: 0}
+  pickupItemStats: {fileID: 0}
+  damage: 25
   attackRate: 1
   projectilePrefab: {fileID: 0}
   projectileSpeed: 0

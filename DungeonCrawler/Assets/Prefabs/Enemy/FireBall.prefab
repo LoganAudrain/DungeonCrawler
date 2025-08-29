@@ -103,7 +103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03eb9fc4aaa726141bbd7946b49eae93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyDelay: 10
+  destroyDelay: 1
+  damageAmount: 10
+  hitEffect: {fileID: 6192724089161036655, guid: e17d9a3f04750764c8c0a7a0461e4c3b, type: 3}
 --- !u!95 &1510409265012554521
 Animator:
   serializedVersion: 7

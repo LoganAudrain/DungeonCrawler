@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e99ea8c9b2e58042ad36b1fdd20e4e4, type: 3}
   m_Name: Demon
   m_EditorClassIdentifier: 
-  attackType: 0
+  attackType: 1
   attackRangeMelee: 1
   attackRangeRanged: 5
   attackCooldown: 2

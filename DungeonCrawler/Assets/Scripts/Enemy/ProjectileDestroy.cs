@@ -1,21 +1,35 @@
+using System.Collections;
 using UnityEngine;
+
 
 public class ProjectileDestroy : MonoBehaviour
 {
-    [SerializeField] private float destroyDelay = 10f; 
+    [SerializeField] private float destroyDelay = 10f;
+    [SerializeField] private int damageAmount = 0;
+    [SerializeField] public ParticleSystem hitEffect;
 
     private void Start()
     {
-        Destroy(gameObject, destroyDelay); // Destroy after ?? seconds
+       
+        StartCoroutine(WaitAndDestroy(destroyDelay));
+
+    }
+
+    IEnumerator WaitAndDestroy(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Instantiate(hitEffect, new Vector3(transform.position.x, transform.position.y, -1f), Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            DoDamage(collision.gameObject, 1);
+            DoDamage(collision.gameObject, damageAmount);
             Destroy(gameObject);
         }
+
         
     }
 
@@ -23,14 +37,16 @@ public class ProjectileDestroy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            DoDamage(other.gameObject, 1);
+            DoDamage(other.gameObject, damageAmount);
             Destroy(gameObject);
         }
+        
+        
     }
 
     private void DoDamage(GameObject obj, int damage)
     {
         IDamageable damageable = obj.GetComponent<IDamageable>();
-        damageable?.TakeDamage(10);
+        damageable?.TakeDamage(damage);
     }
 }
