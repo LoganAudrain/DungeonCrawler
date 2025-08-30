@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject statMenu;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject pauseMenuParent;
     private InventoryMenu inventoryMenuComponent;
 
     private GameObject currentActiveMenu;
@@ -32,7 +33,9 @@ public class GameManager : MonoBehaviour
             // Pause menu toggle (Escape key)
             if (UnityEngine.InputSystem.Keyboard.current.escapeKey.wasPressedThisFrame)
             {
-                ToggleMenu(pauseMenu);
+
+                ToggleMenu(pauseMenuParent, pauseMenu);
+
             }
         }
     }
@@ -99,6 +102,7 @@ public class GameManager : MonoBehaviour
         if (inventoryMenu != null) inventoryMenu.SetActive(false);
         if (statMenu != null) statMenu.SetActive(false);
         if (pauseMenu != null) pauseMenu.SetActive(false);
+        if (pauseMenuParent != null) pauseMenuParent.SetActive(false);
         currentActiveMenu = null;
     }
 

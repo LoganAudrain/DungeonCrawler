@@ -158,8 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65894595f2685b34cbfc6f6c0a3bab64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: c6f02959f6da468408a5568931949bf5, type: 2}
-  characterStats: {fileID: 0}
+  weapon: {fileID: 11400000, guid: 94a1272f166946d409b472689e487c87, type: 2}
+  characterStats: {fileID: 8854861580244916766}
 --- !u!114 &8854861580244916766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,14 +172,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2439bf22acc33294895972c01922ebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
-  MaxMana: 0
+  MaxHealth: 30
+  MaxMana: 10
   Strength: 1
   Constitution: 1
   Dexterity: 1
   Intelligence: 1
   ManaRegenRate: 5
-  m_regenInterval: 1
+  m_regenInterval: 30
 --- !u!61 &7785994912158559144
 BoxCollider2D:
   m_ObjectHideFlags: 0
