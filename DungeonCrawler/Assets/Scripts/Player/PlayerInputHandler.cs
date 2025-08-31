@@ -1,9 +1,11 @@
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    [SerializeField] float MovementSpeed = 5f;
+    [SerializeField] float BaseSpeed = 5f;
+    private float MovementSpeed;
 
     [SerializeField] Animator Animator;
     [SerializeField] SpriteRenderer SpriteRenderer;
@@ -11,11 +13,14 @@ public class PlayerInputHandler : MonoBehaviour
 
     private Vector2 m_moveInput;
     private PlayerControls m_controls;
+    private CharacterStats CharacterStats;
 
     private void Awake()
     {
        
         m_controls = new PlayerControls();
+
+        CharacterStats = GetComponent<CharacterStats>();
 
         //Movement
         m_controls.Player.Move.performed += ctx => m_moveInput = ctx.ReadValue<Vector2>();
@@ -42,6 +47,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Update()
     {
+        MovementSpeed = BaseSpeed + (1 + CharacterStats.GetDexterity / 100);
+
         Vector3 movement = new Vector3(m_moveInput.x, m_moveInput.y, 0f);
         transform.position += MovementSpeed * Time.deltaTime * movement;
 

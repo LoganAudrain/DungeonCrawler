@@ -86,6 +86,37 @@ public class EnemyAI : MonoBehaviour
         attackTimer -= Time.deltaTime;
     }
 
+    public void AwardExperienceToPlayer()
+    {
+        if (attackData == null) return;
+        int exp = attackData.Experience;
+        if (exp <= 0) { 
+            Debug.Log("No experience to award.");
+            return;
+        }
+
+        
+        
+        GameManager gameManager = FindAnyObjectByType<GameManager>();
+        if (gameManager != null)
+        {
+            var menu = gameManager.GetComponent<InventoryMenu>();
+            if (menu != null)
+            {
+               menu.AddExperience(exp);
+               Debug.Log("Awarded " + exp + " experience to player.");
+            }
+            else
+            {
+              Debug.LogWarning("Player does not have InventoryMenu component to receive experience.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Could not find Player to award experience.");
+        }
+    }
+
     void HandleMelee(float distance)
     {
         if (distance > attackData.attackRangeMelee)

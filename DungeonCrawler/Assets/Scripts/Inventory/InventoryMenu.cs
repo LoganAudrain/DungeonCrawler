@@ -19,6 +19,14 @@ public class InventoryMenu : MonoBehaviour
     public TMP_Text IntelligenceText; // Player intelligence display
     public Transform itemListParent; // VerticalLayoutGroup container
     public GameObject itemSlotPrefab; // Prefab with InventoryItemUI script
+    public TMP_Text LevelNumber; // Player level display
+    public TMP_Text CurrentExperienceText; // Player experience display
+    public TMP_Text MaxExpeeienceText; // Experience to next level display
+
+    [Header("Leveling Data")]
+    public int CurrentExperience = 0;
+    public int ExperienceToNextLevel = 100;
+    public int PlayerLevel = 1;
 
     [Header("Inventory Data")]
     public Inventory playerInventory;
@@ -60,6 +68,45 @@ public class InventoryMenu : MonoBehaviour
         {
             HandleStatPointInput();
         }
+        CheckLevelUp();
+    }
+
+    public void AddExperience(int amount)
+    {
+        CurrentExperience += amount;
+        CheckLevelUp();
+        UpdateExperienceUI();
+    }
+
+    private void CheckLevelUp()
+    {
+        // Handle multiple level-ups if enough EXP is gained at once
+        while (CurrentExperience >= ExperienceToNextLevel)
+        {
+            CurrentExperience -= ExperienceToNextLevel;
+            LevelUP();
+        }
+        UpdateExperienceUI();
+    }
+    private void UpdateExperienceUI()
+    {
+        if (CurrentExperienceText != null)
+            CurrentExperienceText.text = CurrentExperience.ToString();
+        if (MaxExpeeienceText != null)
+            MaxExpeeienceText.text = ExperienceToNextLevel.ToString();
+        if (LevelNumber != null)
+            LevelNumber.text = PlayerLevel.ToString();
+    }
+    public void LevelUP() { 
+        PlayerLevel++;
+        LevelNumber.text = PlayerLevel.ToString();
+        ExperienceToNextLevel = Mathf.RoundToInt(ExperienceToNextLevel * 1.5f);
+        MaxExpeeienceText.text = ExperienceToNextLevel.ToString();
+        availableSP += 5; // Award 5 SP per level, adjust as needed
+        if (SPText != null)
+            SPText.text = availableSP.ToString();
+        ShowStats();
+        UpdateExperienceUI();
     }
 
     void HandleStatPointInput()
@@ -155,7 +202,7 @@ public class InventoryMenu : MonoBehaviour
 
     private void OnInventoryChanged()
     {
-        Debug.Log("Inventory changed event received.");
+        //Debug.Log("Inventory changed event received.");
         if (inventoryMenu.activeSelf)
             ShowInventoryContents();
     }

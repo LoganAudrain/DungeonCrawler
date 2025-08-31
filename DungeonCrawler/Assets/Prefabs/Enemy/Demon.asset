@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Demon
   m_EditorClassIdentifier: 
   attackType: 1
+  Experience: 10
   attackRangeMelee: 1
   attackRangeRanged: 5
   attackCooldown: 2

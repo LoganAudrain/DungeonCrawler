@@ -154,6 +154,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 353897391789541168, guid: 33c47c84c0a5e0e4a8d07c91418e7ac9, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 353897391789541168, guid: 33c47c84c0a5e0e4a8d07c91418e7ac9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4981135432384946165, guid: 33c47c84c0a5e0e4a8d07c91418e7ac9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.48747
@@ -687,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 4535797174286399190, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
       propertyPath: m_Name
       value: Player_LizardM
+      objectReference: {fileID: 0}
+    - target: {fileID: 7785994912158559144, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
