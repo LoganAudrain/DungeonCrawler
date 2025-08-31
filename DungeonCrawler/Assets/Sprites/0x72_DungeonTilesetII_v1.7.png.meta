@@ -1004,7 +1004,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_1
+      name: Human_F_Idle1
       rect:
         serializedVersion: 2
         x: 128
@@ -1026,7 +1026,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_2
+      name: Human_F_Idle2
       rect:
         serializedVersion: 2
         x: 144
@@ -1048,7 +1048,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_3
+      name: Human_F_Idle4
       rect:
         serializedVersion: 2
         x: 176
@@ -1070,7 +1070,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_4
+      name: Human_F_Run1
       rect:
         serializedVersion: 2
         x: 192
@@ -1092,7 +1092,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_5
+      name: Human_F_Run2
       rect:
         serializedVersion: 2
         x: 208
@@ -1114,7 +1114,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_6
+      name: Human_F_Run3
       rect:
         serializedVersion: 2
         x: 224
@@ -1136,7 +1136,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_7
+      name: Human_F_Run4
       rect:
         serializedVersion: 2
         x: 240
@@ -1158,7 +1158,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_8
+      name: Human_F_Hit
       rect:
         serializedVersion: 2
         x: 256
@@ -1444,12 +1444,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_21
+      name: Human_M_Idle1
       rect:
         serializedVersion: 2
         x: 128
         y: 447
-        width: 17
+        width: 16
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1466,13 +1466,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_22
+      name: Human_M_Idle2
       rect:
         serializedVersion: 2
         x: 144
         y: 447
-        width: 17
-        height: 20
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1488,13 +1488,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_23
+      name: Human_M_Idle3
       rect:
         serializedVersion: 2
         x: 160
         y: 447
-        width: 17
-        height: 19
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1510,13 +1510,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_24
+      name: Human_M_Idle4
       rect:
         serializedVersion: 2
         x: 176
         y: 447
-        width: 17
-        height: 20
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1532,12 +1532,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_25
+      name: Human_M_Run1
       rect:
         serializedVersion: 2
         x: 192
         y: 447
-        width: 17
+        width: 16
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1554,13 +1554,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_26
+      name: Human_M_Run2
       rect:
         serializedVersion: 2
         x: 208
-        y: 449
-        width: 17
-        height: 21
+        y: 447
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1576,13 +1576,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_27
+      name: Human_M_Run3
       rect:
         serializedVersion: 2
         x: 224
-        y: 448
-        width: 17
-        height: 20
+        y: 447
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1598,12 +1598,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_28
+      name: Human_M_Run4
       rect:
         serializedVersion: 2
         x: 240
         y: 447
-        width: 17
+        width: 16
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1620,13 +1620,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_29
+      name: Human_M_Hit
       rect:
         serializedVersion: 2
         x: 256
-        y: 451
+        y: 447
         width: 17
-        height: 21
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1906,12 +1906,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_42
+      name: Knight_F_Idle1
       rect:
         serializedVersion: 2
         x: 127
         y: 415
-        width: 17
+        width: 16
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1928,12 +1928,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_43
+      name: Knight_F_Idle2
       rect:
         serializedVersion: 2
         x: 143
         y: 415
-        width: 17
+        width: 16
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1950,12 +1950,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_44
+      name: Knight_F_Idle3
       rect:
         serializedVersion: 2
         x: 159
         y: 415
-        width: 17
+        width: 16
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1972,13 +1972,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_45
+      name: Knight_F_Idle4
       rect:
         serializedVersion: 2
         x: 175
         y: 415
-        width: 17
-        height: 21
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1994,13 +1994,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_46
+      name: Knight_F_Run1
       rect:
         serializedVersion: 2
         x: 191
-        y: 416
-        width: 17
-        height: 22
+        y: 415
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2016,13 +2016,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_47
+      name: Knight_F_Run2
       rect:
         serializedVersion: 2
         x: 207
-        y: 417
-        width: 17
-        height: 22
+        y: 415
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2038,13 +2038,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_48
+      name: Knight_F_Run3
       rect:
         serializedVersion: 2
         x: 223
-        y: 416
-        width: 17
-        height: 23
+        y: 415
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2060,12 +2060,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_49
+      name: Knight_F_Run4
       rect:
         serializedVersion: 2
         x: 239
         y: 415
-        width: 17
+        width: 16
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2082,13 +2082,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_50
+      name: Knight_F_Hit
       rect:
         serializedVersion: 2
-        x: 256
-        y: 419
+        x: 255
+        y: 415
         width: 16
-        height: 25
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2368,13 +2368,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_63
+      name: Knight_M_Hit
       rect:
         serializedVersion: 2
-        x: 256
-        y: 387
+        x: 255
+        y: 383
         width: 16
-        height: 25
+        height: 29
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2610,12 +2610,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_74
+      name: Knight_M_Idle1
       rect:
         serializedVersion: 2
         x: 127
         y: 383
-        width: 17
+        width: 16
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2632,12 +2632,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_75
+      name: Knight_M_Idle2
       rect:
         serializedVersion: 2
         x: 143
         y: 383
-        width: 17
+        width: 16
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2654,12 +2654,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_76
+      name: Knight_M_Idle3
       rect:
         serializedVersion: 2
         x: 159
         y: 383
-        width: 17
+        width: 16
         height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2676,13 +2676,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_77
+      name: Knight_M_Idle4
       rect:
         serializedVersion: 2
         x: 175
         y: 383
-        width: 17
-        height: 21
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2698,13 +2698,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_78
+      name: Knight_M_Run1
       rect:
         serializedVersion: 2
         x: 191
-        y: 384
-        width: 17
-        height: 22
+        y: 383
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2720,13 +2720,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_79
+      name: Knight_M_Run2
       rect:
         serializedVersion: 2
         x: 207
-        y: 385
-        width: 17
-        height: 22
+        y: 383
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2742,13 +2742,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_80
+      name: Knight_M_Run3
       rect:
         serializedVersion: 2
         x: 223
-        y: 384
-        width: 17
-        height: 23
+        y: 383
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2764,12 +2764,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_81
+      name: Knight_M_Run4
       rect:
         serializedVersion: 2
         x: 239
         y: 383
-        width: 17
+        width: 16
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3028,13 +3028,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_93
+      name: Wizard_F_Idle1
       rect:
         serializedVersion: 2
         x: 127
         y: 351
-        width: 17
-        height: 22
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3050,12 +3050,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_94
+      name: Wizard_F_Idle2
       rect:
         serializedVersion: 2
         x: 143
         y: 351
-        width: 17
+        width: 16
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3072,13 +3072,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_95
+      name: Wizard_F_Idle3
       rect:
         serializedVersion: 2
-        x: 159
+        x: 160
         y: 351
-        width: 33
-        height: 20
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3094,13 +3094,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_96
+      name: Wizard_F_Run1
       rect:
         serializedVersion: 2
         x: 191
         y: 351
-        width: 17
-        height: 20
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3116,12 +3116,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_97
+      name: Wizard_F_Run2
       rect:
         serializedVersion: 2
         x: 207
         y: 351
-        width: 17
+        width: 16
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3138,12 +3138,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_98
+      name: Wizard_F_Run3
       rect:
         serializedVersion: 2
         x: 223
         y: 351
-        width: 17
+        width: 16
         height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3160,13 +3160,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_99
+      name: Wizard_F_Run4
       rect:
         serializedVersion: 2
         x: 239
         y: 351
-        width: 17
-        height: 20
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3182,13 +3182,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_100
+      name: Wizard_F_Hit
       rect:
         serializedVersion: 2
         x: 255
-        y: 353
+        y: 351
         width: 17
-        height: 23
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3468,13 +3468,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_113
+      name: Wizard_M_Idle1
       rect:
         serializedVersion: 2
-        x: 129
+        x: 128
         y: 319
         width: 16
-        height: 21
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3490,10 +3490,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_114
+      name: Wizard_M_Idle2
       rect:
         serializedVersion: 2
-        x: 145
+        x: 144
         y: 319
         width: 16
         height: 22
@@ -3512,13 +3512,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_115
+      name: Wizard_M_Idle3
       rect:
         serializedVersion: 2
         x: 160
         y: 319
-        width: 17
-        height: 20
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3534,13 +3534,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_116
+      name: Wizard_M_Idle4
       rect:
         serializedVersion: 2
-        x: 177
+        x: 176
         y: 319
         width: 16
-        height: 20
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3556,13 +3556,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_117
+      name: Wizard_M_Run1
       rect:
         serializedVersion: 2
         x: 192
         y: 319
-        width: 17
-        height: 20
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3578,10 +3578,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_118
+      name: Wizard_M_Run2
       rect:
         serializedVersion: 2
-        x: 209
+        x: 208
         y: 319
         width: 16
         height: 22
@@ -3600,12 +3600,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_119
+      name: Wizard_M_Run3
       rect:
         serializedVersion: 2
         x: 224
         y: 319
-        width: 17
+        width: 16
         height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -3622,13 +3622,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_120
+      name: Wizard_M_Run4
       rect:
         serializedVersion: 2
-        x: 239
+        x: 240
         y: 319
-        width: 18
-        height: 21
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3644,13 +3644,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_121
+      name: Wizard_M_Hit
       rect:
         serializedVersion: 2
-        x: 257
-        y: 322
+        x: 256
+        y: 319
         width: 16
-        height: 23
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4304,12 +4304,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_151
+      name: Lizard_F_Idle1
       rect:
         serializedVersion: 2
         x: 128
         y: 287
-        width: 17
+        width: 16
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -4326,12 +4326,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_152
+      name: Lizard_F_Idle2
       rect:
         serializedVersion: 2
         x: 144
         y: 287
-        width: 17
+        width: 16
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -4348,13 +4348,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_153
+      name: Lizard_F_Idle3
       rect:
         serializedVersion: 2
-        x: 159
+        x: 160
         y: 287
-        width: 18
-        height: 18
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4370,13 +4370,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_154
+      name: Lizard_F_Idle4
       rect:
         serializedVersion: 2
         x: 176
         y: 287
-        width: 17
-        height: 20
+        width: 16
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4392,12 +4392,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_155
+      name: Lizard_F_Run1
       rect:
         serializedVersion: 2
         x: 192
         y: 287
-        width: 17
+        width: 16
         height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -4414,13 +4414,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_156
+      name: Lizard_F_Run2
       rect:
         serializedVersion: 2
         x: 208
-        y: 289
-        width: 17
-        height: 21
+        y: 287
+        width: 16
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4436,13 +4436,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_157
+      name: Lizard_F_Run3
       rect:
         serializedVersion: 2
         x: 224
-        y: 288
-        width: 17
-        height: 21
+        y: 287
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4458,13 +4458,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_158
+      name: Lizard_F_Run4
       rect:
         serializedVersion: 2
         x: 240
         y: 287
-        width: 17
-        height: 19
+        width: 16
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4480,13 +4480,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_159
+      name: Lizard_F_Hit
       rect:
         serializedVersion: 2
         x: 256
-        y: 290
-        width: 17
-        height: 21
+        y: 287
+        width: 16
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4722,7 +4722,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_170
+      name: Lizard_M_Idle1
       rect:
         serializedVersion: 2
         x: 128
@@ -4744,7 +4744,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_171
+      name: Lizard_M_Idle2
       rect:
         serializedVersion: 2
         x: 144
@@ -4766,7 +4766,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_172
+      name: Lizard_M_Idle3
       rect:
         serializedVersion: 2
         x: 160
@@ -4788,7 +4788,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_173
+      name: Lizard_M_Idle4
       rect:
         serializedVersion: 2
         x: 176
@@ -4810,7 +4810,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_174
+      name: Lizard_M_Run1
       rect:
         serializedVersion: 2
         x: 192
@@ -4832,13 +4832,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_175
+      name: Lizard_M_Run2
       rect:
         serializedVersion: 2
         x: 208
-        y: 256
+        y: 255
         width: 16
-        height: 21
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4854,13 +4854,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_176
+      name: Lizard_M_Run3
       rect:
         serializedVersion: 2
         x: 224
         y: 255
         width: 16
-        height: 21
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4876,7 +4876,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_177
+      name: Lizard_M_Run4
       rect:
         serializedVersion: 2
         x: 240
@@ -4898,13 +4898,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_178
+      name: Lizard_M_Hit
       rect:
         serializedVersion: 2
         x: 256
-        y: 258
+        y: 255
         width: 16
-        height: 21
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5008,7 +5008,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_183
+      name: Dwarf_F_Idle1
       rect:
         serializedVersion: 2
         x: 129
@@ -5030,7 +5030,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_184
+      name: Dwarf_F_Idle2
       rect:
         serializedVersion: 2
         x: 145
@@ -5052,7 +5052,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_185
+      name: Dwarf_F_Idle3
       rect:
         serializedVersion: 2
         x: 161
@@ -5074,12 +5074,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_186
+      name: Dwarf_F_Idle4
       rect:
         serializedVersion: 2
         x: 177
         y: 223
-        width: 16
+        width: 15
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -5096,7 +5096,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_187
+      name: Dwarf_F_Run1
       rect:
         serializedVersion: 2
         x: 192
@@ -5118,13 +5118,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_188
+      name: Dwarf_F_Run2
       rect:
         serializedVersion: 2
         x: 208
-        y: 225
+        y: 223
         width: 16
-        height: 24
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5140,13 +5140,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_189
+      name: Dwarf_F_Run3
       rect:
         serializedVersion: 2
         x: 224
-        y: 224
+        y: 223
         width: 16
-        height: 24
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5162,7 +5162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_190
+      name: Dwarf_F_Run4
       rect:
         serializedVersion: 2
         x: 240
@@ -5184,13 +5184,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_191
+      name: Dwarf_F_Hit
       rect:
         serializedVersion: 2
         x: 256
-        y: 228
-        width: 17
-        height: 22
+        y: 223
+        width: 16
+        height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5382,13 +5382,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_200
+      name: Dwarf_M_Run2
       rect:
         serializedVersion: 2
         x: 208
-        y: 193
+        y: 191
         width: 16
-        height: 24
+        height: 26
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5404,13 +5404,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_201
+      name: Dwarf_M_Hit
       rect:
         serializedVersion: 2
         x: 256
-        y: 196
+        y: 191
         width: 17
-        height: 22
+        height: 27
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5602,7 +5602,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_210
+      name: Dwarf_M_Idle1
       rect:
         serializedVersion: 2
         x: 129
@@ -5624,7 +5624,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_211
+      name: Dwarf_M_Idle2
       rect:
         serializedVersion: 2
         x: 145
@@ -5646,7 +5646,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_212
+      name: Dwarf_M_Idle3
       rect:
         serializedVersion: 2
         x: 161
@@ -5668,12 +5668,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_213
+      name: Dwarf_M_Idle4
       rect:
         serializedVersion: 2
         x: 177
         y: 191
-        width: 16
+        width: 15
         height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -5690,7 +5690,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_214
+      name: Dwarf_M_Run1
       rect:
         serializedVersion: 2
         x: 192
@@ -5712,13 +5712,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_215
+      name: Dwarf_M_Run3
       rect:
         serializedVersion: 2
         x: 224
-        y: 192
+        y: 191
         width: 16
-        height: 24
+        height: 25
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5734,7 +5734,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_216
+      name: Dwarf_M_Run4
       rect:
         serializedVersion: 2
         x: 240
@@ -7472,7 +7472,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 0x72_DungeonTilesetII_v1.7_295
+      name: Human_F_Idle3
       rect:
         serializedVersion: 2
         x: 160
@@ -7647,6 +7647,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Wizard_F_Idle4
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 351
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f76b29d60a4dd2949a7365843824d968
+      internalID: 648036613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -7662,9 +7684,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       0x72_DungeonTilesetII_v1.7_0: 7488293847307671404
-      0x72_DungeonTilesetII_v1.7_1: -2588492162921912793
       0x72_DungeonTilesetII_v1.7_10: 2106140140805951812
-      0x72_DungeonTilesetII_v1.7_100: -905194229401323469
       0x72_DungeonTilesetII_v1.7_101: 7074596232013395449
       0x72_DungeonTilesetII_v1.7_102: -713283896240682152
       0x72_DungeonTilesetII_v1.7_103: 2170067338408928697
@@ -7678,16 +7698,7 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_110: 5878722865323890374
       0x72_DungeonTilesetII_v1.7_111: -199898581177869354
       0x72_DungeonTilesetII_v1.7_112: -1390414740188072803
-      0x72_DungeonTilesetII_v1.7_113: -6678003208251979901
-      0x72_DungeonTilesetII_v1.7_114: -4104670303789555025
-      0x72_DungeonTilesetII_v1.7_115: 5886025629164058283
-      0x72_DungeonTilesetII_v1.7_116: 2387758949135099675
-      0x72_DungeonTilesetII_v1.7_117: 6906252607805044945
-      0x72_DungeonTilesetII_v1.7_118: 7795414025671229760
-      0x72_DungeonTilesetII_v1.7_119: 3220089509785189774
       0x72_DungeonTilesetII_v1.7_12: 6580896328393768807
-      0x72_DungeonTilesetII_v1.7_120: 35238837712302819
-      0x72_DungeonTilesetII_v1.7_121: 4248005503178696446
       0x72_DungeonTilesetII_v1.7_122: 107642458577454836
       0x72_DungeonTilesetII_v1.7_123: 5816442385674919966
       0x72_DungeonTilesetII_v1.7_124: -439318899881366701
@@ -7720,15 +7731,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_149: -404981911006740706
       0x72_DungeonTilesetII_v1.7_15: 5694975199243680343
       0x72_DungeonTilesetII_v1.7_150: -4448097333125548894
-      0x72_DungeonTilesetII_v1.7_151: 7137568892044698534
-      0x72_DungeonTilesetII_v1.7_152: -8919992827408367480
-      0x72_DungeonTilesetII_v1.7_153: 1946682194783544059
-      0x72_DungeonTilesetII_v1.7_154: -8543070043068654524
-      0x72_DungeonTilesetII_v1.7_155: 2093564461607980726
-      0x72_DungeonTilesetII_v1.7_156: -2119291179869579615
-      0x72_DungeonTilesetII_v1.7_157: 4610167249050343213
-      0x72_DungeonTilesetII_v1.7_158: 4321460127115072613
-      0x72_DungeonTilesetII_v1.7_159: -9015855011004672021
       0x72_DungeonTilesetII_v1.7_16: 6356965305964175674
       0x72_DungeonTilesetII_v1.7_160: -2154075962893115652
       0x72_DungeonTilesetII_v1.7_161: 4558744868989341921
@@ -7741,30 +7743,12 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_168: -4822638494709260691
       0x72_DungeonTilesetII_v1.7_169: -7439205362357829969
       0x72_DungeonTilesetII_v1.7_17: 3358874197456654406
-      0x72_DungeonTilesetII_v1.7_170: 1562974697901453862
-      0x72_DungeonTilesetII_v1.7_171: -8419048281255591650
-      0x72_DungeonTilesetII_v1.7_172: 7409363467076437380
-      0x72_DungeonTilesetII_v1.7_173: -5183578598681055627
-      0x72_DungeonTilesetII_v1.7_174: 5810948312588613381
-      0x72_DungeonTilesetII_v1.7_175: -6285995801757197253
-      0x72_DungeonTilesetII_v1.7_176: -4669373383469370021
-      0x72_DungeonTilesetII_v1.7_177: -4948316847329570964
-      0x72_DungeonTilesetII_v1.7_178: 2616254980156781774
       0x72_DungeonTilesetII_v1.7_179: -8832995882494473905
       0x72_DungeonTilesetII_v1.7_18: -488972454529861262
       0x72_DungeonTilesetII_v1.7_180: 2735211189993247945
       0x72_DungeonTilesetII_v1.7_181: 6198357885843175324
       0x72_DungeonTilesetII_v1.7_182: -958540702186921012
-      0x72_DungeonTilesetII_v1.7_183: 8436500793266356257
-      0x72_DungeonTilesetII_v1.7_184: -1223718610375802490
-      0x72_DungeonTilesetII_v1.7_185: 2986457445477678054
-      0x72_DungeonTilesetII_v1.7_186: 6021327626389640913
-      0x72_DungeonTilesetII_v1.7_187: -1940061725888804717
-      0x72_DungeonTilesetII_v1.7_188: -8477407622781496324
-      0x72_DungeonTilesetII_v1.7_189: 324620729170544266
       0x72_DungeonTilesetII_v1.7_19: -2861042471855044922
-      0x72_DungeonTilesetII_v1.7_190: 5292215463639477939
-      0x72_DungeonTilesetII_v1.7_191: -6079487723356715419
       0x72_DungeonTilesetII_v1.7_192: -4324019793427034617
       0x72_DungeonTilesetII_v1.7_193: -5712063643207834514
       0x72_DungeonTilesetII_v1.7_194: 4130822442018234628
@@ -7773,10 +7757,7 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_197: -5250226029990218837
       0x72_DungeonTilesetII_v1.7_198: -1086010440101012056
       0x72_DungeonTilesetII_v1.7_199: -358952811768204748
-      0x72_DungeonTilesetII_v1.7_2: 8718443979697428641
       0x72_DungeonTilesetII_v1.7_20: -4815152473122300811
-      0x72_DungeonTilesetII_v1.7_200: 2094781142805662057
-      0x72_DungeonTilesetII_v1.7_201: 547232814663850800
       0x72_DungeonTilesetII_v1.7_202: 3282577858737591953
       0x72_DungeonTilesetII_v1.7_203: 5185892633025419547
       0x72_DungeonTilesetII_v1.7_204: -7256058446281164947
@@ -7785,18 +7766,9 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_207: 6912095727924543620
       0x72_DungeonTilesetII_v1.7_208: 7664224028100684353
       0x72_DungeonTilesetII_v1.7_209: -3774093941810560986
-      0x72_DungeonTilesetII_v1.7_21: -2410973750015426006
-      0x72_DungeonTilesetII_v1.7_210: -5359700142553616902
-      0x72_DungeonTilesetII_v1.7_211: 8467707297946718993
-      0x72_DungeonTilesetII_v1.7_212: -6343555749259248409
-      0x72_DungeonTilesetII_v1.7_213: 3766560218062033130
-      0x72_DungeonTilesetII_v1.7_214: 6978903274461992264
-      0x72_DungeonTilesetII_v1.7_215: 2820137711510528655
-      0x72_DungeonTilesetII_v1.7_216: -8414819366076769454
       0x72_DungeonTilesetII_v1.7_217: -2012757455827362579
       0x72_DungeonTilesetII_v1.7_218: -8221320723017393958
       0x72_DungeonTilesetII_v1.7_219: -6263196591443337417
-      0x72_DungeonTilesetII_v1.7_22: 4810914120880681913
       0x72_DungeonTilesetII_v1.7_220: 4608943932271061298
       0x72_DungeonTilesetII_v1.7_221: -1827038441829818559
       0x72_DungeonTilesetII_v1.7_222: 7621647303431958183
@@ -7807,7 +7779,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_227: -7886143704497696660
       0x72_DungeonTilesetII_v1.7_228: 1855830003490570330
       0x72_DungeonTilesetII_v1.7_229: -4909677335491246486
-      0x72_DungeonTilesetII_v1.7_23: -5166788430190393475
       0x72_DungeonTilesetII_v1.7_230: -2961998415575938111
       0x72_DungeonTilesetII_v1.7_231: -5644737901839732776
       0x72_DungeonTilesetII_v1.7_232: -8803336006104843869
@@ -7818,7 +7789,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_237: -7781825312516294574
       0x72_DungeonTilesetII_v1.7_238: 6763541741953116743
       0x72_DungeonTilesetII_v1.7_239: -3404627642466139304
-      0x72_DungeonTilesetII_v1.7_24: 8491734584394286762
       0x72_DungeonTilesetII_v1.7_240: 8151029797025180017
       0x72_DungeonTilesetII_v1.7_241: 3694122064344858166
       0x72_DungeonTilesetII_v1.7_242: 1775480458964321721
@@ -7829,7 +7799,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_247: -982811978538570114
       0x72_DungeonTilesetII_v1.7_248: 7806442600868206582
       0x72_DungeonTilesetII_v1.7_249: 1245178166109667642
-      0x72_DungeonTilesetII_v1.7_25: -6172761969000488071
       0x72_DungeonTilesetII_v1.7_250: 2132494947925857821
       0x72_DungeonTilesetII_v1.7_251: 5026268541737153986
       0x72_DungeonTilesetII_v1.7_252: -3680357348026242500
@@ -7840,7 +7809,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_257: -7587322695701363319
       0x72_DungeonTilesetII_v1.7_258: 7651680440160202265
       0x72_DungeonTilesetII_v1.7_259: -8151500121098761127
-      0x72_DungeonTilesetII_v1.7_26: -1918641835168573976
       0x72_DungeonTilesetII_v1.7_260: -8307390040965355510
       0x72_DungeonTilesetII_v1.7_261: -3388475590322593712
       0x72_DungeonTilesetII_v1.7_262: -5602279809399323471
@@ -7851,7 +7819,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_267: 3024478367683568392
       0x72_DungeonTilesetII_v1.7_268: -5329848725411688998
       0x72_DungeonTilesetII_v1.7_269: -8495757646102266203
-      0x72_DungeonTilesetII_v1.7_27: 8085974987091948278
       0x72_DungeonTilesetII_v1.7_270: 36708325912766759
       0x72_DungeonTilesetII_v1.7_271: -834487564112113845
       0x72_DungeonTilesetII_v1.7_272: -653385322113179227
@@ -7862,7 +7829,6 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_277: -5126078540136010858
       0x72_DungeonTilesetII_v1.7_278: -5791763582271254071
       0x72_DungeonTilesetII_v1.7_279: 3630659731113264954
-      0x72_DungeonTilesetII_v1.7_28: -6087067030474023094
       0x72_DungeonTilesetII_v1.7_280: -2086624254043462201
       0x72_DungeonTilesetII_v1.7_281: -5527729797564131307
       0x72_DungeonTilesetII_v1.7_282: -5463493071869131177
@@ -7873,18 +7839,15 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_287: -2868903046796085194
       0x72_DungeonTilesetII_v1.7_288: 5980345663193596801
       0x72_DungeonTilesetII_v1.7_289: -6179681055039524776
-      0x72_DungeonTilesetII_v1.7_29: -2641371662018749091
       0x72_DungeonTilesetII_v1.7_290: -5418932733711996721
       0x72_DungeonTilesetII_v1.7_291: -1072456354155603112
       0x72_DungeonTilesetII_v1.7_292: -6545802605014456263
       0x72_DungeonTilesetII_v1.7_293: 5826320507970334121
       0x72_DungeonTilesetII_v1.7_294: 3258979074984140082
-      0x72_DungeonTilesetII_v1.7_295: 552283597
       0x72_DungeonTilesetII_v1.7_296: 1774880294
       0x72_DungeonTilesetII_v1.7_297: 148126762
       0x72_DungeonTilesetII_v1.7_298: 1768192502
       0x72_DungeonTilesetII_v1.7_299: 1800662772
-      0x72_DungeonTilesetII_v1.7_3: 6867809341995509054
       0x72_DungeonTilesetII_v1.7_30: 3914297699600369032
       0x72_DungeonTilesetII_v1.7_300: 695665019
       0x72_DungeonTilesetII_v1.7_301: -442168575
@@ -7900,19 +7863,8 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_37: -1402350852106452376
       0x72_DungeonTilesetII_v1.7_38: -8634667612772120990
       0x72_DungeonTilesetII_v1.7_39: 5510448659172100349
-      0x72_DungeonTilesetII_v1.7_4: -3704396458316966358
       0x72_DungeonTilesetII_v1.7_40: -1407210756208996651
       0x72_DungeonTilesetII_v1.7_41: 1316836494217650560
-      0x72_DungeonTilesetII_v1.7_42: 3967019532428607231
-      0x72_DungeonTilesetII_v1.7_43: 239033809502878038
-      0x72_DungeonTilesetII_v1.7_44: -4180652406558521486
-      0x72_DungeonTilesetII_v1.7_45: 6703721768816422164
-      0x72_DungeonTilesetII_v1.7_46: 1480366189844070803
-      0x72_DungeonTilesetII_v1.7_47: -8705335424438938360
-      0x72_DungeonTilesetII_v1.7_48: -1838782379550794613
-      0x72_DungeonTilesetII_v1.7_49: 6316866244187269000
-      0x72_DungeonTilesetII_v1.7_5: 791959885700629213
-      0x72_DungeonTilesetII_v1.7_50: 4002954026423587524
       0x72_DungeonTilesetII_v1.7_51: -2060006733675905694
       0x72_DungeonTilesetII_v1.7_52: -4997783028872265930
       0x72_DungeonTilesetII_v1.7_53: 8583533789109114438
@@ -7922,31 +7874,19 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_57: 2655183458585420904
       0x72_DungeonTilesetII_v1.7_58: 3364420986687794538
       0x72_DungeonTilesetII_v1.7_59: -6594126597430979414
-      0x72_DungeonTilesetII_v1.7_6: 3324285157292081454
       0x72_DungeonTilesetII_v1.7_60: -2534360962292391268
       0x72_DungeonTilesetII_v1.7_61: -2362262972533718839
       0x72_DungeonTilesetII_v1.7_62: 1341905317818791140
-      0x72_DungeonTilesetII_v1.7_63: -3424016768271279003
       0x72_DungeonTilesetII_v1.7_64: -3720921139902658931
       0x72_DungeonTilesetII_v1.7_65: -554181264238424431
       0x72_DungeonTilesetII_v1.7_66: -7098249558181796534
       0x72_DungeonTilesetII_v1.7_67: 5697998691861961498
       0x72_DungeonTilesetII_v1.7_68: 5690693028498410908
       0x72_DungeonTilesetII_v1.7_69: -8068503732344645450
-      0x72_DungeonTilesetII_v1.7_7: -7193019919153137336
       0x72_DungeonTilesetII_v1.7_70: -4585638698085595694
       0x72_DungeonTilesetII_v1.7_71: 4646072442476084536
       0x72_DungeonTilesetII_v1.7_72: -1022562840748810267
       0x72_DungeonTilesetII_v1.7_73: -1235142525551724512
-      0x72_DungeonTilesetII_v1.7_74: 4265638018674371071
-      0x72_DungeonTilesetII_v1.7_75: 5579335266590474791
-      0x72_DungeonTilesetII_v1.7_76: 3024294334022642555
-      0x72_DungeonTilesetII_v1.7_77: -3857538110874382113
-      0x72_DungeonTilesetII_v1.7_78: -1061906478194804154
-      0x72_DungeonTilesetII_v1.7_79: -7762440418981726469
-      0x72_DungeonTilesetII_v1.7_8: 3429794657976500964
-      0x72_DungeonTilesetII_v1.7_80: 8494758609932232144
-      0x72_DungeonTilesetII_v1.7_81: 3471258045059041173
       0x72_DungeonTilesetII_v1.7_82: 4481688978213388326
       0x72_DungeonTilesetII_v1.7_83: 8214140057576888733
       0x72_DungeonTilesetII_v1.7_84: -5888053809107134436
@@ -7959,13 +7899,97 @@ TextureImporter:
       0x72_DungeonTilesetII_v1.7_90: 5443141518175841120
       0x72_DungeonTilesetII_v1.7_91: 5652958049565504538
       0x72_DungeonTilesetII_v1.7_92: -1142882489051644970
-      0x72_DungeonTilesetII_v1.7_93: -8803183250490903568
-      0x72_DungeonTilesetII_v1.7_94: 286665429197289360
-      0x72_DungeonTilesetII_v1.7_95: 6576869493251050134
-      0x72_DungeonTilesetII_v1.7_96: -3460308498950050976
-      0x72_DungeonTilesetII_v1.7_97: -4554979505065217262
-      0x72_DungeonTilesetII_v1.7_98: 6662265692936726610
-      0x72_DungeonTilesetII_v1.7_99: -2065985488211235582
+      Dwarf_F_Hit: -6079487723356715419
+      Dwarf_F_Idle1: 8436500793266356257
+      Dwarf_F_Idle2: -1223718610375802490
+      Dwarf_F_Idle3: 2986457445477678054
+      Dwarf_F_Idle4: 6021327626389640913
+      Dwarf_F_Run1: -1940061725888804717
+      Dwarf_F_Run2: -8477407622781496324
+      Dwarf_F_Run3: 324620729170544266
+      Dwarf_F_Run4: 5292215463639477939
+      Dwarf_M_Hit: 547232814663850800
+      Dwarf_M_Idle1: -5359700142553616902
+      Dwarf_M_Idle2: 8467707297946718993
+      Dwarf_M_Idle3: -6343555749259248409
+      Dwarf_M_Idle4: 3766560218062033130
+      Dwarf_M_Run1: 6978903274461992264
+      Dwarf_M_Run2: 2094781142805662057
+      Dwarf_M_Run3: 2820137711510528655
+      Dwarf_M_Run4: -8414819366076769454
+      Human_F_Hit: 3429794657976500964
+      Human_F_Idle1: -2588492162921912793
+      Human_F_Idle2: 8718443979697428641
+      Human_F_Idle3: 552283597
+      Human_F_Idle4: 6867809341995509054
+      Human_F_Run1: -3704396458316966358
+      Human_F_Run2: 791959885700629213
+      Human_F_Run3: 3324285157292081454
+      Human_F_Run4: -7193019919153137336
+      Human_M_Hit: -2641371662018749091
+      Human_M_Idl1: 4810914120880681913
+      Human_M_Idle1: -2410973750015426006
+      Human_M_Idle2: 4810914120880681913
+      Human_M_Idle3: -5166788430190393475
+      Human_M_Idle4: 8491734584394286762
+      Human_M_Run1: -6172761969000488071
+      Human_M_Run2: -1918641835168573976
+      Human_M_Run3: 8085974987091948278
+      Human_M_Run4: -6087067030474023094
+      Knight_F_Hit: 4002954026423587524
+      Knight_F_Idle1: 3967019532428607231
+      Knight_F_Idle2: 239033809502878038
+      Knight_F_Idle3: -4180652406558521486
+      Knight_F_Idle4: 6703721768816422164
+      Knight_F_Run1: 1480366189844070803
+      Knight_F_Run2: -8705335424438938360
+      Knight_F_Run3: -1838782379550794613
+      Knight_F_Run4: 6316866244187269000
+      Knight_M_Hit: -3424016768271279003
+      Knight_M_Idle1: 4265638018674371071
+      Knight_M_Idle2: 5579335266590474791
+      Knight_M_Idle3: 3024294334022642555
+      Knight_M_Idle4: -3857538110874382113
+      Knight_M_Run1: -1061906478194804154
+      Knight_M_Run2: -7762440418981726469
+      Knight_M_Run3: 8494758609932232144
+      Knight_M_Run4: 3471258045059041173
+      Lizard_F_Hit: -9015855011004672021
+      Lizard_F_Idle1: 7137568892044698534
+      Lizard_F_Idle2: -8919992827408367480
+      Lizard_F_Idle3: 1946682194783544059
+      Lizard_F_Idle4: -8543070043068654524
+      Lizard_F_Run1: 2093564461607980726
+      Lizard_F_Run2: -2119291179869579615
+      Lizard_F_Run3: 4610167249050343213
+      Lizard_F_Run4: 4321460127115072613
+      Lizard_M_Hit: 2616254980156781774
+      Lizard_M_Idle1: 1562974697901453862
+      Lizard_M_Idle2: -8419048281255591650
+      Lizard_M_Idle3: 7409363467076437380
+      Lizard_M_Idle4: -5183578598681055627
+      Lizard_M_Run1: 5810948312588613381
+      Lizard_M_Run2: -6285995801757197253
+      Lizard_M_Run3: -4669373383469370021
+      Lizard_M_Run4: -4948316847329570964
+      Wizard_F_Hit: -905194229401323469
+      Wizard_F_Idle1: -8803183250490903568
+      Wizard_F_Idle2: 286665429197289360
+      Wizard_F_Idle3: 6576869493251050134
+      Wizard_F_Idle4: 648036613
+      Wizard_F_Run1: -3460308498950050976
+      Wizard_F_Run2: -4554979505065217262
+      Wizard_F_Run3: 6662265692936726610
+      Wizard_F_Run4: -2065985488211235582
+      Wizard_M_Hit: 4248005503178696446
+      Wizard_M_Idle1: -6678003208251979901
+      Wizard_M_Idle2: -4104670303789555025
+      Wizard_M_Idle3: 5886025629164058283
+      Wizard_M_Idle4: 2387758949135099675
+      Wizard_M_Run1: 6906252607805044945
+      Wizard_M_Run2: 7795414025671229760
+      Wizard_M_Run3: 3220089509785189774
+      Wizard_M_Run4: 35238837712302819
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

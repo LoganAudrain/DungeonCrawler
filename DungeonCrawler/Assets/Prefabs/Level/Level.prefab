@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  autoGenerate: 0
+  autoGenerate: 1
   spawnSettings: {fileID: 11400000, guid: 488ef81c96df6174eb65b4525509f278, type: 2}
   genSettings: {fileID: 11400000, guid: 3eceb4822f3ff324eae87ff92a1b0852, type: 2}
   _groundTiles: {fileID: 8480441878655957208}
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 2520025800638486656}
-  LevelIndex: 1
+  LevelIndex: 0
   Player: {fileID: 0}
   PlayerPrefab: {fileID: 4535797174286399190, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
 --- !u!1 &6881980276399606470

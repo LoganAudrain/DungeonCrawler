@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e1552eeb45cd14c948c451b3a34aa5, type: 3}
   m_Name: LevelEnemySpawner
   m_EditorClassIdentifier: 
-  spawnables: []
+  spawnables:
+  - spawnable: {fileID: 2310946995772133861, guid: 3f8bb992baa91f34498b1806d3abfcd3, type: 3}
+    weight: 1
   OverlapSpawns: 0

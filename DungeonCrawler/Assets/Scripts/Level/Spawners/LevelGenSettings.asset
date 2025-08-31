@@ -12,3 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb25a9aa24678d84f997a2d75b6a29bd, type: 3}
   m_Name: LevelGenSettings
   m_EditorClassIdentifier: 
+  MapSizeX: 100
+  MapSizeY: 100
+  MinRoomSize: 6
+  HallwaySize: 2
+  MinBlockSize: 12
+  Splits: 5
+  WallTiles:
+  - {fileID: 11400000, guid: cf15cdcc9f884af4ca958127b23bd73f, type: 2}
+  FloorTiles:
+  - {fileID: 11400000, guid: d3be04b0c3c40344aa616e64eeeee411, type: 2}
+  VoidTile: {fileID: 11400000, guid: f7ff703434b91a94a8f6cde8d48167bc, type: 2}
