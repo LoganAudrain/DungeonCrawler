@@ -39,6 +39,7 @@ public class InventoryMenu : MonoBehaviour
     public GameObject[] decreaseStatButtons; // Assign in Inspector: 0=Strength, 1=Constitution, etc.
     void Start()
     {
+        
         inventoryMenu.SetActive(false);
         StatMenu.SetActive(false);
         if (playerInventory != null)
