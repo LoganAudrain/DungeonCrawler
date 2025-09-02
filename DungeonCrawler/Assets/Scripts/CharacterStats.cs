@@ -4,6 +4,7 @@ public class CharacterStats : MonoBehaviour, IDamageable
 {
 
     [Header("Core Stats")]
+   
     [SerializeField] int MaxHealth;
     [SerializeField] int MaxMana;
 
@@ -150,6 +151,19 @@ public class CharacterStats : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        EnemyAI enemyAI = GetComponent<EnemyAI>();
+        if (enemyAI != null)
+        {
+            enemyAI.AwardExperienceToPlayer();
+        }
+        else
+        {
+            Debug.Log("CharacterStats: Non-enemy character died.");
+        }
+
+        if (GetComponent<Collider2D>() != null)
+            GetComponent<Collider2D>().enabled = false;
+
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {

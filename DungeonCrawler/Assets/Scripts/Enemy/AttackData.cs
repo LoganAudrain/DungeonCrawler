@@ -8,6 +8,7 @@ public class AttackData : ScriptableObject
     public AttackType attackType;
 
     [Header("General")]
+    public int Experience;
     public float attackRangeMelee = 2f;
     public float attackRangeRanged = 10f;
 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mimic
   m_EditorClassIdentifier: 
   attackType: 0
+  Experience: 10
   attackRangeMelee: 1
   attackRangeRanged: 5
   attackCooldown: 1

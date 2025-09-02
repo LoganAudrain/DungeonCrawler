@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1550106149857215103}
   m_Layer: 0
   m_Name: Mimic
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,12 +67,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2439bf22acc33294895972c01922ebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 1
   MaxHealth: 5
   MaxMana: 0
   Strength: 0
   Constitution: 0
   Dexterity: 0
   Intelligence: 0
+  ManaRegenRate: 5
+  m_regenInterval: 1
 --- !u!61 &2396942726243664103
 BoxCollider2D:
   m_ObjectHideFlags: 0
