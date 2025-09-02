@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour, IDamageable
 {
+    [Header("Name")]
+    public string characterName = "John Doe";
 
     [Header("Core Stats")]
-   
     [SerializeField] int MaxHealth;
     [SerializeField] int MaxMana;
 
