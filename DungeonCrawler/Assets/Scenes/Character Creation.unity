@@ -2231,22 +2231,23 @@ MonoBehaviour:
     Intelligence: 0
   - archetype: LizardMan-Savage
     prefab: {fileID: 4535797174286399190, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
-    description: I eat bugs. Yummy yummy.
-    Health: 10
+    description: Lizardmen are tribals
+    Health: 20
     Mana: 10
-    Strength: 10
-    Dexterity: 15
-    Constitution: 10
-    Intelligence: 10
+    Strength: 12
+    Dexterity: 16
+    Constitution: 8
+    Intelligence: 8
   - archetype: Dwarf-Barbarian
-    prefab: {fileID: 0}
-    description: 
-    Health: 0
-    Mana: 0
-    Strength: 1
-    Dexterity: 0
-    Constitution: 0
-    Intelligence: 0
+    prefab: {fileID: 8785748467620322624, guid: d2038e0ed48af0a4fa701556131253d9, type: 3}
+    description: A small but mighty dwarf. Dwarves are known for their great strength
+      and resilience, but they are not very fast and are terrible with anything arcane.
+    Health: 25
+    Mana: 5
+    Strength: 13
+    Dexterity: 8
+    Constitution: 13
+    Intelligence: 10
   archetypeDescriptionUI: {fileID: 550635196}
   Health: {fileID: 1324085927}
   Mana: {fileID: 1061218330}
