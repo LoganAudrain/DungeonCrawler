@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e49a27d4cbe3b34886d62b825a57c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 5
+  BaseSpeed: 5
   Animator: {fileID: 2168960981945286063}
   SpriteRenderer: {fileID: 2089138110501232709}
   weaponHandler: {fileID: 871160601577906759}
@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2439bf22acc33294895972c01922ebed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterName: Billy Bob
   MaxHealth: 30
   MaxMana: 10
   Strength: 1

@@ -2050,8 +2050,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 739631926}
+  - component: {fileID: 739631927}
   m_Layer: 0
-  m_Name: Class Selector
+  m_Name: Archetype Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2072,6 +2073,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &739631927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739631925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe6a92f8d693e77448874dc02b3c5261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPlayerStats: {fileID: 7672897177954373218}
+  archetypeStats:
+  - archetype: Human-Generalist
+    prefab: {fileID: 0}
+    description: 
+    Health: 0
+    Mana: 0
+    Strength: 0
+    Dexterity: 0
+    Constitution: 0
+    Intelligence: 0
+  - archetype: Unkown-Knight
+    prefab: {fileID: 0}
+    description: 
+    Health: 0
+    Mana: 0
+    Strength: 0
+    Dexterity: 0
+    Constitution: 0
+    Intelligence: 0
+  - archetype: Human-Wizard
+    prefab: {fileID: 0}
+    description: 
+    Health: 0
+    Mana: 0
+    Strength: 0
+    Dexterity: 0
+    Constitution: 0
+    Intelligence: 0
+  - archetype: LizardMan-Savage
+    prefab: {fileID: 4535797174286399190, guid: 001183a3270ccfe498d873a3fad4f8b6, type: 3}
+    description: Lizard noises
+    Health: 10
+    Mana: 10
+    Strength: 10
+    Dexterity: 10
+    Constitution: 10
+    Intelligence: 10
+  - archetype: Dwarf-Barbarian
+    prefab: {fileID: 0}
+    description: 
+    Health: 0
+    Mana: 0
+    Strength: 0
+    Dexterity: 0
+    Constitution: 0
+    Intelligence: 0
 --- !u!1 &758981334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6426,19 +6486,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141779978}
   m_CullTransparentMesh: 1
---- !u!114 &2017745846739679693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5221893126627973362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c57aaebc2bcbd445bc6f398f031eea5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSlots: 20
 --- !u!1 &5221893126627973362
 GameObject:
   m_ObjectHideFlags: 0
@@ -6448,12 +6495,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6925127938795046637}
-  - component: {fileID: 2017745846739679693}
   - component: {fileID: 7672897177954373217}
   - component: {fileID: 7537959091792941963}
   - component: {fileID: 7672897177954373218}
   m_Layer: 0
-  m_Name: Player_LizardM
+  m_Name: New Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6578,6 +6624,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 823578667}
   - {fileID: 1262939154}
-  - {fileID: 739631926}
   - {fileID: 829672216}
   - {fileID: 6925127938795046637}
+  - {fileID: 739631926}

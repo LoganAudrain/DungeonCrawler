@@ -37,6 +37,17 @@ public class CharacterStats : MonoBehaviour, IDamageable
     public int GetDexterity => Dexterity;
     public int GetIntelligence => Intelligence;
 
+    public void SetPlayerCharacterStats(PlayerArchetypeDefaults data)
+    {
+        MaxHealth = data.Health;
+        MaxMana = data.Mana;
+
+        Strength = data.Strength;
+        Dexterity = data.Dexterity;
+        Constitution = data.Constitution;
+        Intelligence = data.Intelligence;
+    }
+
     public void IncreaseStrength() { Strength++; RecalculateStats(); }
     public void IncreaseConstitution()
     {
