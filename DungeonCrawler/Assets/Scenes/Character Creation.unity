@@ -1592,7 +1592,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 506786295}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739631927}
+        m_TargetAssemblyTypeName: ArchetypeSelector, Assembly-CSharp
+        m_MethodName: AssignArchetypeStats
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Dwarf-Barbarian
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &506786295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,7 +2132,7 @@ MonoBehaviour:
     Health: 10
     Mana: 10
     Strength: 10
-    Dexterity: 10
+    Dexterity: 15
     Constitution: 10
     Intelligence: 10
   - archetype: Dwarf-Barbarian
@@ -2128,7 +2140,7 @@ MonoBehaviour:
     description: 
     Health: 0
     Mana: 0
-    Strength: 0
+    Strength: 1
     Dexterity: 0
     Constitution: 0
     Intelligence: 0
@@ -3695,7 +3707,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1222126534}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739631927}
+        m_TargetAssemblyTypeName: ArchetypeSelector, Assembly-CSharp
+        m_MethodName: AssignArchetypeStats
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Human-Wizard
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1222126534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4585,7 +4609,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1462314888}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739631927}
+        m_TargetAssemblyTypeName: ArchetypeSelector, Assembly-CSharp
+        m_MethodName: AssignArchetypeStats
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: LizardMan-Savage
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1462314888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4784,7 +4820,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1479505128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739631927}
+        m_TargetAssemblyTypeName: ArchetypeSelector, Assembly-CSharp
+        m_MethodName: AssignArchetypeStats
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Unkown-Knight
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1479505128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5795,7 +5843,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1990677010}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 739631927}
+        m_TargetAssemblyTypeName: ArchetypeSelector, Assembly-CSharp
+        m_MethodName: AssignArchetypeStats
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Human-Generalist
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1990677010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6528,7 +6588,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5221893126627973362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d8433af974494384ea6a0b5ea12544e1, type: 2}
   m_CullingMode: 0
@@ -6549,7 +6609,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5221893126627973362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -6591,7 +6651,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
