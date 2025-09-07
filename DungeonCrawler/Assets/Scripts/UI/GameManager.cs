@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Player;
+
     [SerializeField] private GameObject interactText;
     [SerializeField] private GameObject inventoryMenu;
     [SerializeField] private GameObject statMenu;
